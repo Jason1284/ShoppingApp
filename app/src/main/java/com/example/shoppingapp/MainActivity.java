@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
+        newDb.addProduct();
         //This is Jason's comment! I hope this works!
         //This is Martin's comment!
         //This is James' comment!
