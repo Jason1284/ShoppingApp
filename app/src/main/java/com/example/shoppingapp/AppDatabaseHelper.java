@@ -66,7 +66,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     /**********************************************************
      *              DATABASE CREATION AND METHOD HANDLING
      **********************************************************/
-    public AppDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public AppDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
