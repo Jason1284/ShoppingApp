@@ -1,4 +1,4 @@
-package com.example.designtest;
+package com.example.shoppingapp;
 
 import android.content.ContentValues;
 import android.content.Context;
