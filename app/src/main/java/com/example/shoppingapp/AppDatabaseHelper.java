@@ -30,7 +30,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     private static final String PRODUCT_ID = "product_id";
     private static final String PRODUCT_NAME = "product_name";
     private static final String PRODUCT_PRICE = "price";
-    private static final String PRODUCT_TYPE = "price";
+    private static final String PRODUCT_AISLE = "aisle";
     /**********************************************************
      *              LIST TABLE COLUMNS NAMES
      **********************************************************/
@@ -47,13 +47,13 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     //Create statement for product_table
     private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
-            + PRODUCT_PRICE + " INTEGER," + PRODUCT_TYPE + " TEXT" + ")";
+            + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT" + ")";
     //Create statement for list_table
     private static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
-            + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT," + ")";
+            + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT" + ")";
     //Create statement for inventory_table
     private static final String CREATE_INVENTORY_TABLE = "CREATE TABLE " + INVENTORY_TABLE
-            + "(" + INVENTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + INVENTORY_NAME + " TEXT," + ")";
+            + "(" + INVENTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + INVENTORY_NAME + " TEXT" + ")";
     //Create statement for listproduct_table
     private static final String CREATE_LISTPRODUCT_TABLE = "CREATE TABLE " + LISTPRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER," + LIST_ID + " INTEGER," + QUANTITY + " INTEGER,"
@@ -80,15 +80,16 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
      }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+        onCreate(db);
     }
 
     public void addProduct(){
         ContentValues values = new ContentValues();
         values.put(PRODUCT_NAME, "Milk");
         values.put(PRODUCT_PRICE, 1);
-        values.put(PRODUCT_TYPE, "Dairy");
+        values.put(PRODUCT_AISLE, "Dairy");
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         db.close();
