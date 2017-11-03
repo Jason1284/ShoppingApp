@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C0C0C0"
     tools:context="com.example.shoppingapp.MainActivity">
 
     <Button
@@ -12,7 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/createList"
+        android:textStyle="bold"
         android:onClick="onLoad"
+        android:background="@drawable/greenbuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,10 +24,12 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="163dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/choseList"
+        android:textStyle="bold"
+        android:background="@drawable/greenbuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -37,6 +42,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/createInventory"
+        android:textStyle="bold"
+        android:background="@drawable/bluebuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -49,6 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/chooseInventory"
+        android:textStyle="bold"
+        android:background="@drawable/bluebuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,9 +71,13 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/sendList"
+        android:textStyle="bold"
+        android:background="@drawable/redbuttonshape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+
 </android.support.constraint.ConstraintLayout>
