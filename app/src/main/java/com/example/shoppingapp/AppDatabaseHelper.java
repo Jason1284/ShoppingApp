@@ -85,11 +85,11 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addProduct(){
+    public void addProduct(Product product){
         ContentValues values = new ContentValues();
-        values.put(PRODUCT_NAME, "Milk");
-        values.put(PRODUCT_PRICE, 1);
-        values.put(PRODUCT_AISLE, "Dairy");
+        values.put(PRODUCT_NAME, product.getName());
+        values.put(PRODUCT_PRICE, product.getPrice());
+        values.put(PRODUCT_AISLE, product.getAisle());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         db.close();
