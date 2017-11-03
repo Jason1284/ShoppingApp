@@ -9,4 +9,7 @@
     <string name="product_price">Price</string>
     <string name="product_name">Item name</string>
     <string name="product_aisle">Aisle</string>
+    <string name="inventory_name">Inventory name</string>
+    <string name="search_item">Search</string>
+    <string name="edit_item">Edit item</string>
 </resources>
