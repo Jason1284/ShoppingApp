@@ -94,4 +94,20 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.insert(PRODUCT_TABLE, null, values);
         db.close();
     }
+
+    public void addList(String listName){
+        ContentValues values = new ContentValues();
+        values.put(LIST_NAME, listName);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(LIST_TABLE, null, values);
+        db.close();
+    }
+
+    public void addInventory(String inventoryName){
+        ContentValues values = new ContentValues();
+        values.put(INVENTORY_NAME, inventoryName);
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(INVENTORY_TABLE, null, values);
+        db.close();
+    }
 }
