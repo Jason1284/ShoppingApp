@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onLoad(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
-        newDb.addProduct();
+        Product milk = new Product();
+        Product eggs = new Product();
+        newDb.addProduct(milk);
+        newDb.addProduct(eggs);
     }
 }
