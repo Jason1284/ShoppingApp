@@ -22,4 +22,7 @@ public class MainActivity extends AppCompatActivity {
         newDb.addProduct(milk);
         newDb.addProduct(eggs);
     }
+     public void onShare(View view){
+
+     }
 }
