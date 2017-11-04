@@ -38,7 +38,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".AddProduct"
-            android:parentActivityName=".MainActivity" > <!--Needs to change to USELIST -->
+            android:parentActivityName=".UseList" >
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

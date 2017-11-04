@@ -5,17 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-/**
- * Created by James on 11/3/2017.
- */
-
 public class AddProduct extends AppCompatActivity {
 
     Product product = new Product();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_product);
+        setContentView(R.layout.activity_add_product);
     }
 
     public void addName(View view){

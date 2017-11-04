@@ -15,7 +15,7 @@ public class SendList extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.send_list);
+        setContentView(R.layout.activity_send_list);
         btnShare = findViewById(R.id.button6);
 
         btnShare.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +29,4 @@ public class SendList extends AppCompatActivity {
             }
         });
     }
-
-
 }
