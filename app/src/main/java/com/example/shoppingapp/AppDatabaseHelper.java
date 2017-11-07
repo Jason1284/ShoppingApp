@@ -5,6 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * Created by SG0216351 on 11/1/2017.
@@ -46,7 +51,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     //Create statement for product_table
     private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
-            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
+            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT UNIQUE,"
             + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT" + ")";
     //Create statement for list_table
     private static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
@@ -109,5 +114,25 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(INVENTORY_TABLE, null, values);
         db.close();
+    }
+
+    public ArrayList<String> feedNewList(){
+        String query = "SELECT * FROM " + PRODUCT_TABLE;
+        SQLiteDatabase db = this.getWritableDatabase();
+        ArrayList<String> mProduct = new ArrayList<String>();
+        Cursor c = db.rawQuery(query, null);
+
+
+        int Column1 = c.getColumnIndex(PRODUCT_NAME);
+        int Column2 = c.getColumnIndex(PRODUCT_PRICE);
+
+
+        while (c.moveToNext()){
+            String Name = c.getString(Column1);
+            int Price = c.getInt(Column2);
+            mProduct.add(Name + " " + Price);
+
+        }
+        return mProduct;
     }
 }
