@@ -14,7 +14,7 @@
         android:layout_marginTop="24dp"
         android:text="@string/createList"
         android:textStyle="bold"
-        android:onClick="onLoad"
+        android:onClick="onCreateList"
         android:background="@drawable/greenbuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/choseList"
+        android:onClick="onChooseList"
         android:textStyle="bold"
         android:background="@drawable/greenbuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button3"
@@ -43,6 +44,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/createInventory"
         android:textStyle="bold"
+        android:onClick="onCreateInventory"
         android:background="@drawable/bluebuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/chooseInventory"
+        android:onClick="onChooseInventory"
         android:textStyle="bold"
         android:background="@drawable/bluebuttonshape"
         app:layout_constraintBottom_toTopOf="@+id/button5"
@@ -79,6 +82,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
-
 
 </android.support.constraint.ConstraintLayout>

@@ -38,7 +38,7 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".AddProduct"
-            android:parentActivityName=".UseList" >
+            android:parentActivityName=".UseList" > <!--Needs to change to USELIST -->
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,6 +51,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name="com.example.shoppingapp.create_list"
+            android:parentActivityName=".MainActivity" >
+        </activity>
+        <activity android:name="com.example.shoppingapp.UseList"
+            android:parentActivityName=".create_list" >
+        </activity>
+        <activity android:name=".choose_inventory" />
+        <activity android:name=".UseInventory" />
 
     </application>
 
