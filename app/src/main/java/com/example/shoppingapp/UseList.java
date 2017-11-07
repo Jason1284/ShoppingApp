@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,10 @@ public class UseList extends AppCompatActivity {
         setContentView(R.layout.activity_use_list);
 
         Intent intent = getIntent();
+        String message = intent.getStringExtra(create_list.EXTRA_MESSAGE);
+
+        TextView textView = (TextView) findViewById(R.id.textView3);
+        textView.setText(message);
 
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
         ArrayList<String> allItems = new ArrayList<String>();
