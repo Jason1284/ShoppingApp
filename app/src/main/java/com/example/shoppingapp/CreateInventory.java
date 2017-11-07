@@ -5,14 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-/**
- * Created by James on 11/3/2017.
- */
-
 public class CreateInventory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_inventory);
+        setContentView(R.layout.activity_create_inventory);
 
         Intent intent = getIntent();
     }
