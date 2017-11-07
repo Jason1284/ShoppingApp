@@ -29,4 +29,9 @@ public class UseList extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.listView2);
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, allItems));
     }
+
+    public void onEditProduct(View view){
+        Intent intent = new Intent(this, EditProduct.class);
+        startActivity(intent);
+    }
 }

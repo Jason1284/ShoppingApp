@@ -25,7 +25,31 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, create_list.class);
         startActivity(intent);
     }
-     public void onShare(View view){
 
-     }
+    public void onChooseList(View view){
+        AppDatabaseHelper newDb = new AppDatabaseHelper(this);
+        Product milk = new Product("milk", 1, "dairy" );
+        Product eggs = new Product("eggs", 5, "dairy");
+        newDb.addProduct(milk);
+        newDb.addProduct(eggs);
+        Intent intent = new Intent(this, ChooseList.class);
+        startActivity(intent);
+    }
+
+    public void onCreateInventory(View view){
+        Intent intent = new Intent(this, CreateInventory.class);
+        startActivity(intent);
+    }
+
+    public void onChooseInventory(View view){
+        Intent intent = new Intent(this, choose_inventory.class);
+        startActivity(intent);
+    }
+
+    public void onShare(View view){
+        Intent intent = new Intent(this, SendList.class);
+        startActivity(intent);
+    }
+
+
 }
