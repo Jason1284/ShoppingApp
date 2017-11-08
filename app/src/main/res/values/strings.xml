@@ -5,7 +5,6 @@
     <string name="createInventory">Create inventory</string>
     <string name="chooseInventory">Choose inventory</string>
     <string name="sendList">Send list</string>
-    <string name="add_item">Add item</string>
     <string name="product_price">Price</string>
     <string name="product_name">Item name</string>
     <string name="product_aisle">Aisle</string>
