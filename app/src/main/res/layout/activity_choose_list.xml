@@ -20,9 +20,11 @@
         android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/choseList"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"
         android:onClick="onChooseList"
+        android:text="@string/choseList"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listView" />
