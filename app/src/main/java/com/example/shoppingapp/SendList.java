@@ -11,13 +11,15 @@ public class SendList extends AppCompatActivity {
     Button btnShare;
     Intent shareIntent;
     String shareBody = "This was sent with ACTION_SEND";
-    //*** change shareBody to the list we select!**/
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_list);
 
         Intent intent = getIntent();
+        //*** change shareBody to take the list we selected like in choose list/inventory!**/
+        //** shareBody = selectedList**//
 
         btnShare = findViewById(R.id.button6);
 
@@ -25,7 +27,7 @@ public class SendList extends AppCompatActivity {
 
             public void onClick(View view) {
                 shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
+                shareIntent.setType("text/html");
                 shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Action Send");
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(shareIntent, "share via"));
