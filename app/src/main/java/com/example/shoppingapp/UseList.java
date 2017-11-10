@@ -44,4 +44,24 @@ public class UseList extends AppCompatActivity {
         Intent intent = new Intent(this, EditProduct.class);
         startActivity(intent);
     }
+
+    public void onAddEdit(View view){
+
+    }
+
+    public void onIncreaseItem(View view){
+
+    }
+
+    public void onDecreaseItem(View view){
+
+    }
+
+    public void onBoxEdit(View view){
+
+    }
+
+    public void onBoxCheck(View view){
+
+    }
 }
