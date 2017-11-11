@@ -137,4 +137,9 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void editProduct(String name){}
+
+    public void addListProduct(){}
+
+    public void addInventoryProduct(){}
+
 }
