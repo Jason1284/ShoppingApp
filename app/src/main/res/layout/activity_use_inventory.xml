@@ -9,15 +9,13 @@
     <TextView
         android:id="@+id/textView12"
         android:layout_width="219dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="44dp"
         android:layout_marginTop="16dp"
         android:text="@string/inventory_name"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintEnd_toStartOf="@+id/button13"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -25,11 +23,11 @@
         android:layout_width="62dp"
         android:layout_height="47dp"
         android:layout_marginTop="16dp"
-        android:onClick="onEditProduct"
-        android:text="@string/add_modify"
-        android:textSize="10sp"
+        android:onClick="onAddProduct"
+        android:text="@string/add_item"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,52 +46,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/current_total"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView3" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/list_total"
-        android:textAlignment="viewStart"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView11"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="65dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="80dp"
-        android:text="@string/list_dollar"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="232dp"
@@ -104,18 +56,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="65dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="2dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/current_dollar"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView3" />
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="62dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/refresh"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

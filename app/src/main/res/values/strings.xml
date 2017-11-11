@@ -12,10 +12,14 @@
     <string name="list_name">List name</string>
     <string name="search_item">Search</string>
     <string name="edit_item">Edit item</string>
-    <string name="add_modify">Add/Modify</string>
+    <string name="add_modify">Add Product</string>
     <string name="current_total">Current Total:</string>
     <string name="list_total">List Total:</string>
     <string name="current_dollar">$0.00</string>
     <string name="list_dollar">$0.00</string>
     <string name="add_item">Add Item</string>
+    <string name="quantity">Quantity</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="refresh">refresh</string>
 </resources>

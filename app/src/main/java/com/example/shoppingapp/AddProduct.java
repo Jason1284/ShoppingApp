@@ -38,5 +38,14 @@ public class AddProduct extends AppCompatActivity {
     public void onAddProduct(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
         newDb.addProduct(product);
+        
+    }
+
+    public void onIncreaseQuantity(View view) {
+
+    }
+
+    public void onDecreaseQuantity(View view) {
+
     }
 }

@@ -40,8 +40,8 @@ public class UseInventory extends AppCompatActivity {
         editor.apply();
     }
 
-    public void onEditProduct(View view){
-        Intent intent = new Intent(this, EditProduct.class);
+    public void onAddProduct(View view){
+        Intent intent = new Intent(this, AddProduct.class);
         startActivity(intent);
     }
 }

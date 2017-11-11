@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -38,30 +39,20 @@ public class UseList extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("name", message);
         editor.apply();
+
     }
 
-    public void onEditProduct(View view){
-        Intent intent = new Intent(this, EditProduct.class);
+    public void onAddProduct(View view){
+        Intent intent = new Intent(this, AddProduct.class);
         startActivity(intent);
     }
 
-    public void onAddEdit(View view){
-
-    }
-
-    public void onIncreaseItem(View view){
-
-    }
-
-    public void onDecreaseItem(View view){
-
-    }
-
-    public void onBoxEdit(View view){
-
-    }
 
     public void onBoxCheck(View view){
+
+    }
+
+    public void onListRestore(View view) {
 
     }
 }
