@@ -135,4 +135,6 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         }
         return mProduct;
     }
+
+    public void editProduct(String name){}
 }

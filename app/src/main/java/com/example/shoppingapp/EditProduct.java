@@ -9,4 +9,6 @@ public class EditProduct extends AppCompatActivity {
         setContentView(R.layout.activity_create_modify_product);
     }
 
+    public void editProduct(String name){}
+
 }
