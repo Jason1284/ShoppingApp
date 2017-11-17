@@ -24,6 +24,7 @@
         on our list, including displaying the cost attached,
         displaying a checkbox, and displaying an increment and
         decrement button per each item in the list.-->
+
     <ListView
         android:id="@+id/listView2"
         android:layout_width="368dp"

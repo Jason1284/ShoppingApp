@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Shopping App</string>
-    <string name="createList">Create</string>
+    <string name="createList">Create list</string>
+    <string name="create">Create</string>
     <string name="choseList">Choose list</string>
-    <string name="createInventory">Create</string>
+    <string name="createInventory">Create Inventory</string>
     <string name="chooseInventory">Choose inventory</string>
     <string name="sendList">Send</string>
     <string name="product_price">Price</string>
