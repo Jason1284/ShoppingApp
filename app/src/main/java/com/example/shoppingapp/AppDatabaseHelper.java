@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,6 +17,8 @@ import java.util.ArrayList;
  */
 
 public class AppDatabaseHelper extends SQLiteOpenHelper {
+
+    private static final String TAG = "APPDatabaseHelper";
 
     //Database name and version
     private static final int DATABASE_VERSION =    1;
@@ -92,12 +95,14 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void addProduct(Product product){
+        Log.v(TAG, "Attempting to add Product");
         ContentValues values = new ContentValues();
         values.put(PRODUCT_NAME, product.getName());
         values.put(PRODUCT_PRICE, product.getPrice());
         values.put(PRODUCT_AISLE, product.getAisle());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
+        Log.d(TAG, "Product has been added");
         db.close();
     }
 
@@ -125,13 +130,13 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
 
         int Column1 = c.getColumnIndex(PRODUCT_NAME);
-        int Column2 = c.getColumnIndex(PRODUCT_PRICE);
+        //int Column2 = c.getColumnIndex(PRODUCT_PRICE);
 
 
         while (c.moveToNext()){
             String Name = c.getString(Column1);
-            int Price = c.getInt(Column2);
-            mProduct.add(Name + " " + Price);
+            //int Price = c.getInt(Column2);
+            mProduct.add(Name/* + " " + Price*/);
 
         }
         return mProduct;
