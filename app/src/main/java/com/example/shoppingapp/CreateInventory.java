@@ -13,11 +13,13 @@ public class CreateInventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_inventory);
 
-        Intent intent = getIntent();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Create Inventory");
+
+        Intent intent = getIntent();
+
+
     }
 
     public void onNewInventory(View view){

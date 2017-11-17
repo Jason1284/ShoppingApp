@@ -18,6 +18,10 @@ public class choose_inventory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_inventory);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar5);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Choose Inventory");
+
         Intent intent = getIntent();
 
         SharedPreferences prefs = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE);
@@ -31,9 +35,7 @@ public class choose_inventory extends AppCompatActivity {
         if(message != "")
             toast.show();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar5);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Choose Inventory");
+
 
     }
 

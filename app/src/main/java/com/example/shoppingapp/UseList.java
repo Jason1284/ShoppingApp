@@ -24,6 +24,10 @@ public class UseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_list);
 
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setTitle("Shopping List");
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(create_list.EXTRA_MESSAGE);
 
@@ -34,9 +38,6 @@ public class UseList extends AppCompatActivity {
         editor.putString("name", message);
         editor.apply();
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //getSupportActionBar().setTitle("Shopping List");
 
     }
 

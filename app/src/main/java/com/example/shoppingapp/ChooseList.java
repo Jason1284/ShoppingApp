@@ -15,6 +15,10 @@ public class ChooseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_list);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Choose List");
+
         Intent intent = getIntent();
 
         SharedPreferences prefs = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE);
@@ -27,9 +31,7 @@ public class ChooseList extends AppCompatActivity {
 
         if(message != "")
             toast.show();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Choose List");
+
     }
 
     public void onChooseList(View view){
