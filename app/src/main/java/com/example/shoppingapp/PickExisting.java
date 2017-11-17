@@ -20,6 +20,10 @@ public class PickExisting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_existing);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar7);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Pick Item");
+
         Intent intent = getIntent();
 
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
@@ -29,9 +33,7 @@ public class PickExisting extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.listView);
         lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, allItems));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar7);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Pick Item");
+
     }
 
     public void onAddNew(View view){
