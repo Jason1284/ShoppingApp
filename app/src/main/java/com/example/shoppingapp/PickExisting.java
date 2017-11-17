@@ -23,6 +23,7 @@ public class PickExisting extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar7);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Pick Item");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 

@@ -18,6 +18,7 @@ public class ChooseList extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Choose List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 

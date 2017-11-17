@@ -21,6 +21,7 @@ public class SendList extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar8);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Send List");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         //*** change shareBody to take the list we selected like in choose list/inventory!**/

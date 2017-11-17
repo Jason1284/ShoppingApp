@@ -21,6 +21,7 @@ public class choose_inventory extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar5);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Choose Inventory");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
 

@@ -12,6 +12,7 @@ public class EditProduct extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar6);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Edit Product");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void editProduct(String name){}

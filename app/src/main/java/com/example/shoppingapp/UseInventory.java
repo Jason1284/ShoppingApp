@@ -26,6 +26,7 @@ public class UseInventory extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Use Inventory");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(create_list.EXTRA_MESSAGE);

@@ -27,6 +27,7 @@ public class UseList extends AppCompatActivity {
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
         //getSupportActionBar().setTitle("Shopping List");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(create_list.EXTRA_MESSAGE);
