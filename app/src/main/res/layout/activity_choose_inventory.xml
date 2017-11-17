@@ -19,12 +19,14 @@
 
     <Button
         android:id="@+id/button109"
-        android:layout_width="wrap_content"
+        android:layout_width="169dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/buttonshape"
         android:onClick="onChooseInventory"
         android:text="@string/chooseInventory"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -23,5 +23,5 @@
     <string name="minus">-</string>
     <string name="refresh">refresh</string>
     <string name="enterNewItem">Enter the new item.</string>
-    <string name="editCurrentItem">Edit the following item.</string> 
+    <string name="editCurrentItem">Edit the following item.</string>
 </resources>
