@@ -29,6 +29,10 @@ public class create_list extends AppCompatActivity {
         Intent intent = new Intent(this, UseList.class);
         EditText editText = (EditText) findViewById(R.id.editText104);
         String message = editText.getText().toString();
+
+        AppDatabaseHelper newList = new AppDatabaseHelper(this);
+        newList.addList(message);
+
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

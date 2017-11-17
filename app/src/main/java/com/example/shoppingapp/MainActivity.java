@@ -20,20 +20,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCreateList(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
-        Product milk = new Product("milk", 1, "dairy" );
-        Product eggs = new Product("eggs", 5, "dairy");
-        newDb.addProduct(milk);
-        newDb.addProduct(eggs);
+        //Product milk = new Product("milk", 1, "dairy" );
+        //Product eggs = new Product("eggs", 5, "dairy");
+        //newDb.addProduct(milk);
+        //newDb.addProduct(eggs);
         Intent intent = new Intent(this, create_list.class);
         startActivity(intent);
     }
 
     public void onChooseList(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
-        Product milk = new Product("milk", 1, "dairy" );
-        Product eggs = new Product("eggs", 5, "dairy");
-        newDb.addProduct(milk);
-        newDb.addProduct(eggs);
+        //Product milk = new Product("milk", 1, "dairy" );
+        //Product eggs = new Product("eggs", 5, "dairy");
+        //newDb.addProduct(milk);
+        //newDb.addProduct(eggs);
         Intent intent = new Intent(this, ChooseList.class);
         startActivity(intent);
     }

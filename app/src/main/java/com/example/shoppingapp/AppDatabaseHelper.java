@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -59,10 +60,10 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
             + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + "INTEGER DEFAULT 0" +  ")";
     //Create statement for list_table
     private static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
-            + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT" + ")";
+            + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT UNIQUE" + ")";
     //Create statement for inventory_table
     private static final String CREATE_INVENTORY_TABLE = "CREATE TABLE " + INVENTORY_TABLE
-            + "(" + INVENTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + INVENTORY_NAME + " TEXT" + ")";
+            + "(" + INVENTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + INVENTORY_NAME + " TEXT UNIQUE" + ")";
     //Create statement for listproduct_table
     private static final String CREATE_LISTPRODUCT_TABLE = "CREATE TABLE " + LISTPRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER," + LIST_ID + " INTEGER," + QUANTITY + " INTEGER,"
@@ -103,7 +104,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         Log.d(TAG, "Product has been added");
-        db.close();
+        
     }
 
     public void addList(String listName){
@@ -144,8 +145,24 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     public void editProduct(String name){}
 
-    public void addListProduct(){}
+    public void addListProduct(String name, Product product){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String insert;
+        insert = "INSERT INTO " + LISTPRODUCT_TABLE + " (" + LIST_ID + ", " + PRODUCT_ID + ", " + QUANTITY + ") VALUES (SELECT " + LIST_ID + " FROM " + LIST_TABLE +
+                " WHERE " + LIST_NAME + " = '" + name + "', SELECT " + PRODUCT_ID + " FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_NAME + " = '" + product.getName() + "', " +
+        product.getQuantity() + ")";
+        db.execSQL(insert);
+        db.close();
+    }
 
-    public void addInventoryProduct(){}
+    public void addInventoryProduct(String name, Product product){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String insert;
+        insert = "INSERT INTO " + INVENTORYPRODUCT_TABLE + " (" + INVENTORY_ID + ", " + PRODUCT_ID + ", " + QUANTITY + ") VALUES (SELECT " + INVENTORY_ID + " FROM " + INVENTORY_TABLE +
+                " WHERE " + INVENTORY_NAME + " = '" + name + "', SELECT " + PRODUCT_ID + " FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_NAME + " = '" + product.getName() + "', " +
+                product.getQuantity() + ")";
+        db.execSQL(insert);
+        db.close();
+    }
 
 }

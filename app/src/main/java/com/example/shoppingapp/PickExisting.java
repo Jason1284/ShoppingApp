@@ -1,7 +1,6 @@
 package com.example.shoppingapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +15,9 @@ import java.util.ArrayList;
  */
 
 public class PickExisting extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
+    public static String FORWARD;
+    
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_existing);
@@ -26,6 +28,8 @@ public class PickExisting extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
+        String message = intent.getStringExtra(UseList.EXTRA_MESSAGE);
+        FORWARD = message;
 
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
         ArrayList<String> allItems = new ArrayList<String>();
@@ -39,6 +43,7 @@ public class PickExisting extends AppCompatActivity {
 
     public void onAddNew(View view){
         Intent intent = new Intent(this, AddProduct.class);
+        intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
 }

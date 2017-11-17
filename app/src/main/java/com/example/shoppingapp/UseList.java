@@ -18,6 +18,8 @@ import java.util.ArrayList;
  */
 
 public class UseList extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
+    public static String FORWARD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class UseList extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(create_list.EXTRA_MESSAGE);
+        FORWARD = message;
 
         TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setText(message);
@@ -44,6 +47,7 @@ public class UseList extends AppCompatActivity {
 
     public void onAddProduct(View view){
         Intent intent = new Intent(this, PickExisting.class);
+        intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
 

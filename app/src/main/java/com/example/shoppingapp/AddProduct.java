@@ -9,6 +9,8 @@ import android.widget.EditText;
 
 public class AddProduct extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
+    public static String FORWARD;
     Product product = new Product();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,8 @@ public class AddProduct extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
+        String message = intent.getStringExtra(PickExisting.EXTRA_MESSAGE);
+        FORWARD = message;
     }
 
     public void addName(View view){
@@ -31,14 +35,21 @@ public class AddProduct extends AppCompatActivity {
     }
 
     public void addPrice(View view){
-        EditText priceText = (EditText) findViewById(R.id.editText2);
+        EditText priceText = (EditText) findViewById(R.id.editText3);
         String price = priceText.getText().toString();
 
         product.setPrice(Integer.parseInt(price));
     }
 
     public void addAisle(View view){
-        EditText aisleText = (EditText) findViewById(R.id.editText3);
+        EditText aisleText = (EditText) findViewById(R.id.editText8);
+        String aisle = aisleText.getText().toString();
+
+        product.setAisle(aisle);
+    }
+
+    public void addQuantity(View view){
+        EditText aisleText = (EditText) findViewById(R.id.editText4);
         String aisle = aisleText.getText().toString();
 
         product.setAisle(aisle);
@@ -47,7 +58,8 @@ public class AddProduct extends AppCompatActivity {
     public void onAddProduct(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
         newDb.addProduct(product);
-        
+
+        newDb.addListProduct(FORWARD, product);
     }
 
 }
