@@ -15,11 +15,11 @@ public class AddProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
-        Intent intent = getIntent();
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Item");
+
+        Intent intent = getIntent();
     }
 
     public void addName(View view){
@@ -49,11 +49,4 @@ public class AddProduct extends AppCompatActivity {
         
     }
 
-    public void onIncreaseQuantity(View view) {
-
-    }
-
-    public void onDecreaseQuantity(View view) {
-
-    }
 }

@@ -57,7 +57,7 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="112dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:background="@drawable/buttonshape"
