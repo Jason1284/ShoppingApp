@@ -7,20 +7,20 @@
 
     <EditText
         android:id="@+id/editText4"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="47dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="@string/inventory_name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
 
     <Button
         android:id="@+id/button8"
-        android:layout_width="165dp"
+        android:layout_width="300dp"
         android:layout_height="36dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/buttonshape"
@@ -31,4 +31,15 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/AppToolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
@@ -26,6 +27,9 @@ public class ChooseList extends AppCompatActivity {
 
         if(message != "")
             toast.show();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar4);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Choose List");
     }
 
     public void onChooseList(View view){

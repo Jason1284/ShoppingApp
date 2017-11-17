@@ -3,6 +3,7 @@ package com.example.shoppingapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
@@ -13,6 +14,10 @@ public class CreateInventory extends AppCompatActivity {
         setContentView(R.layout.activity_create_inventory);
 
         Intent intent = getIntent();
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Create Inventory");
     }
 
     public void onNewInventory(View view){
