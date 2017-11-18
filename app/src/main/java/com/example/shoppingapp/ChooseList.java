@@ -43,7 +43,7 @@ public class ChooseList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ChooseList.this, UseList.class);
-                intent.putExtra("", listView.getItemIdAtPosition(position).toString());
+                intent.putExtra("ListName", listView.getItemIdAtPosition(position).toString());
                 startActivity(intent);
             }
         });*/

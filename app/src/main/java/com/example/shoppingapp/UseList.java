@@ -38,6 +38,13 @@ public class UseList extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setText(message);
 
+        AppDatabaseHelper newDb = new AppDatabaseHelper(this);
+        ArrayList<String> allItems = new ArrayList<String>();
+        allItems = newDb.feedNewList();
+
+        ListView lv = (ListView) findViewById(R.id.listView2);
+        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, allItems));
+
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("name", message);
         editor.apply();
