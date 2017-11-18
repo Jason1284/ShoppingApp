@@ -8,9 +8,14 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class ChooseList extends AppCompatActivity {
+
+    //ListView listView;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_list);
@@ -32,6 +37,16 @@ public class ChooseList extends AppCompatActivity {
 
         if(message != "")
             toast.show();
+
+        /*listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ChooseList.this, UseList.class);
+                intent.putExtra("", listView.getItemIdAtPosition(position).toString());
+                startActivity(intent);
+            }
+        });*/
 
     }
 
