@@ -60,6 +60,11 @@ public class AddProduct extends AppCompatActivity {
         newDb.addProduct(product);
 
         newDb.addListProduct(FORWARD, product);
+
+        Intent intent = new Intent(this, UseList.class);
+        intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        startActivity(intent);
     }
+
 
 }

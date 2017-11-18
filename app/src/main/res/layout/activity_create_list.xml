@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.shoppingapp.create_list">
 
+    <!--Comment-->
+
     <EditText
         android:id="@+id/editText104"
         android:layout_width="300dp"

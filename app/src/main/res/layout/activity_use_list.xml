@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar10" />
 
-    <!--This listView will eventually be attached to a custom
+    <!--This listView will eventually be ,attached to a custom
         array in order to provide the UI interface we require
         on our list, including displaying the cost attached,
         displaying a checkbox, and displaying an increment and
