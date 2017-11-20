@@ -25,7 +25,7 @@ public class ViewHolder {
 
     public TextView getTextView() {
         return textView;
-    }
+    }   
 
     public void setTextView(TextView textView) {
         this.textView = textView;
