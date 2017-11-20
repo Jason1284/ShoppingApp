@@ -57,7 +57,7 @@ public class CustomCursorAdapter extends CursorAdapter{
 
                 String currentPositionString=Double.toString(currentPosition);
                 if(cursor.moveToPosition(currentPosition))
-                { 
+                {
 
                     String rowID=cursor.getString(cursor.getColumnIndex("_id"));
                     if(isChecked){

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class UseList extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
-    public static String FORWARD;
+    public static String FORWARD; 
     Cursor cursor;
     CustomCursorAdapter myCursorAdapter;
     ContentValues values;
