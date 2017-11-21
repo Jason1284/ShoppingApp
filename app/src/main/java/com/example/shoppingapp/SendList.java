@@ -20,7 +20,7 @@ public class SendList extends AppCompatActivity {
     String shareBody = "This was sent with ACTION_SEND";
     /**
      * onCreate will allow the user to select a list to be sent vie HTML formatted text.
-     * @param savedInstanceState
+     * @param savedInstanceState to help the device save when app is paused.
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
