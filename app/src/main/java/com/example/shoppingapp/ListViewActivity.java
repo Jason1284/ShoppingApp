@@ -37,7 +37,7 @@ public class ListViewActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listviewdatalayout);
+        setContentView(R.layout.activity_use_list);
 
         LISTVIEW = (ListView) findViewById(R.id.listView2);
 
