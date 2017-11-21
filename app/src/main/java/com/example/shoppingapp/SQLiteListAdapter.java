@@ -2,6 +2,7 @@ package com.example.shoppingapp;
 
 /**
  * Created by SG0216351 on 11/21/2017.
+ * https://www.android-examples.com/display-multiple-data-from-sqlite-database-inside-listview/
  */
 
 import java.util.ArrayList;
