@@ -28,7 +28,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     /**********************************************************
      *              TABLE NAMES
      **********************************************************/
-    private static final String PRODUCT_TABLE = "product_table";
+    public static final String PRODUCT_TABLE = "product_table";
     private static final String LISTPRODUCT_TABLE = "listproduct_table";
     private static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
     private static final String LIST_TABLE = "list_table";
@@ -36,17 +36,18 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     /**********************************************************
      *              PRODUCT TABLE COLUMNS NAMES
      **********************************************************/
-    private static final String PRODUCT_ID = "product_id";
-    private static final String PRODUCT_NAME = "product_name";
-    private static final String PRODUCT_PRICE = "price";
-    private static final String PRODUCT_AISLE = "aisle";
-    private static final String PRODUCT_VALUE = "value";
+    public static final String PRODUCT_ID = "product_id";
+    public static final String PRODUCT_NAME = "product_name";
+    public static final String PRODUCT_PRICE = "price";
+    public static final String PRODUCT_AISLE = "aisle";
+    public static final String PRODUCT_VALUE = "value";
+    public static final String PRODUCT_QUANTITY = "quantity";
     /**********************************************************
      *              LIST TABLE COLUMNS NAMES
      **********************************************************/
     private static final String LIST_ID = "list_id";
     private static final String LIST_NAME = "list_name";
-    private static final String QUANTITY = "quantity";
+    public static final String QUANTITY = "quantity";
     /**********************************************************
      *              INVENTORY TABLE COLUMN NAMES
      **********************************************************/
@@ -57,7 +58,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     //Create statement for product_table
     private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT UNIQUE,"
-            + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + "INTEGER DEFAULT 0" +  ")";
+            + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + "INTEGER DEFAULT 0," + PRODUCT_QUANTITY  + ")";
     //Create statement for list_table
     private static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
             + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT UNIQUE" + ")";
@@ -101,6 +102,8 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         values.put(PRODUCT_NAME, product.getName());
         values.put(PRODUCT_PRICE, product.getPrice());
         values.put(PRODUCT_AISLE, product.getAisle());
+        values.put(PRODUCT_VALUE, product.getValue());
+        values.put(PRODUCT_QUANTITY, product.getValue());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         Log.d(TAG, "Product has been added");

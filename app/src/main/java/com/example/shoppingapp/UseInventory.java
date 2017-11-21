@@ -41,7 +41,7 @@ public class UseInventory extends AppCompatActivity {
         allItems = newDb.feedNewList();
 
         ListView lv = (ListView) findViewById(R.id.listView3);
-        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, allItems));
+        //lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, allItems));
 
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE).edit();
         editor.putString("inventory", message);
