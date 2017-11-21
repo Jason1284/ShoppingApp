@@ -38,12 +38,16 @@ public class ChooseList extends AppCompatActivity {
         if(message != "")
             toast.show();
 
+        //This is just code awaiting for how the List of list names is going to be passed from the database
+        //by J. Clarke
         /*listView = (ListView) findViewById(R.id.listView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ChooseList.this, UseList.class);
+                Intent intent = new Intent(this, UseList.class);
                 intent.putExtra("ListName", listView.getItemIdAtPosition(position).toString());
+                AppDatabaseHelper newList = new AppDatabaseHelper(this);
+                newList.addList(ListName);
                 startActivity(intent);
             }
         });*/
