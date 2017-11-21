@@ -1,4 +1,4 @@
-//https://www.android-examples.com/display-multiple-data-from-sqlite-database-inside-listview/
+<!--https://www.android-examples.com/display-multiple-data-from-sqlite-database-inside-listview/-->
 
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
