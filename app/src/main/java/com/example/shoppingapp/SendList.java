@@ -7,6 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * This Class will take a listfrom the database and convert into a HTML formated text to be sent
+ * by an app of the user's choice, such as email or text message.
+ * @author James Clarke
+ * @link https://developer.android.com/training/sharing/send.html
+ */
 public class SendList extends AppCompatActivity {
 
     Button btnShare;
@@ -23,7 +29,8 @@ public class SendList extends AppCompatActivity {
         getSupportActionBar().setTitle("Send List");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
+
         //*** change shareBody to take the list we selected like in choose list/inventory!**/
         //** shareBody = selectedList**//
 
