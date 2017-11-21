@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * This Class will take a listfrom the database and convert into a HTML formated text to be sent
+ * This Class will take a list from the database and convert into a HTML formated text to be sent
  * by an app of the user's choice, such as email or text message.
  * @author James Clarke
  * @link https://developer.android.com/training/sharing/send.html
