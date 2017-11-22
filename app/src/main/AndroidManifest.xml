@@ -60,9 +60,6 @@
         <activity android:name="com.example.shoppingapp.PickExisting"
             android:parentActivityName=".UseList" >
         </activity>
-        <activity android:name="com.example.shoppingapp.ListViewActivity"
-            android:parentActivityName=".create_list" >
-        </activity>
         <activity android:name=".choose_inventory" />
         <activity android:name=".UseInventory" />
 

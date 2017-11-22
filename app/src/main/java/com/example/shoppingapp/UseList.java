@@ -24,9 +24,6 @@ import java.util.ArrayList;
 public class UseList extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD; 
-    Cursor cursor;
-    CustomCursorAdapter myCursorAdapter;
-    ContentValues values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,34 +48,6 @@ public class UseList extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("name", message);
         editor.apply();
-
-        /*
-        private void createListView() {
-            setContentView(R.layout.main);
-
-            cursor=dh.query(DatabaseHelper.USER_PASSWORD, new String[]{“_id”,”username”,”selected”}, null, null, null, null, “firstname asc”);
-
-            startManagingCursor(cursor);
-            myCursorAdapter= new CustomCursorAdapter(this,cursor);
-            this.getListView().setAdapter(myCursorAdapter);
-        }
-
-        private void insertData(String firstName ,String password){
-            if(values!= null){
-                values.clear();
-            }
-            values.put(“username”,firstName);
-            values.put(“password”, password);
-            dh.insert(DatabaseHelper.USER_PASSWORD, null, values);
-        }
-
-        private void clickHandler(View view){
-
-            if(view.getId() == R.id.checkbox){
-                cursor.requery();
-            }
-        }*/
-
 
     }
 

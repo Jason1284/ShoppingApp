@@ -26,7 +26,7 @@ public class create_list extends AppCompatActivity {
     }
 
     public void onNewList(View view){
-        Intent intent = new Intent(this, ListViewActivity.class);
+        Intent intent = new Intent(this, UseList.class);
 
         EditText editText = (EditText) findViewById(R.id.editText104);
         String message = editText.getText().toString();

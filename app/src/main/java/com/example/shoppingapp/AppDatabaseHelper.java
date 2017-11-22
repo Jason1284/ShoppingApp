@@ -19,20 +19,20 @@ import java.util.ArrayList;
 
 public class AppDatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "APPDatabaseHelper";
+    public static final String TAG = "APPDatabaseHelper";
 
     //Database name and version
-    private static final int DATABASE_VERSION =    1;
-    private static final String DATABASE_NAME = "PRODUCTS.db";
+    public static final int DATABASE_VERSION =    1;
+    public static final String DATABASE_NAME = "PRODUCTS.db";
 
     /**********************************************************
      *              TABLE NAMES
      **********************************************************/
     public static final String PRODUCT_TABLE = "product_table";
-    private static final String LISTPRODUCT_TABLE = "listproduct_table";
-    private static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
-    private static final String LIST_TABLE = "list_table";
-    private static final String INVENTORY_TABLE = "inventory_table";
+    public static final String LISTPRODUCT_TABLE = "listproduct_table";
+    public static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
+    public static final String LIST_TABLE = "list_table";
+    public static final String INVENTORY_TABLE = "inventory_table";
     /**********************************************************
      *              PRODUCT TABLE COLUMNS NAMES
      **********************************************************/
@@ -45,32 +45,32 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     /**********************************************************
      *              LIST TABLE COLUMNS NAMES
      **********************************************************/
-    private static final String LIST_ID = "list_id";
-    private static final String LIST_NAME = "list_name";
+    public static final String LIST_ID = "list_id";
+    public static final String LIST_NAME = "list_name";
     public static final String QUANTITY = "quantity";
     /**********************************************************
      *              INVENTORY TABLE COLUMN NAMES
      **********************************************************/
-    private static final String INVENTORY_ID = "inventory_id";
-    private static final String INVENTORY_NAME = "inventory_name";
+    public static final String INVENTORY_ID = "inventory_id";
+    public static final String INVENTORY_NAME = "inventory_name";
 
 
     //Create statement for product_table
-    private static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
+    public static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT UNIQUE,"
             + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + "INTEGER DEFAULT 0," + PRODUCT_QUANTITY  + ")";
     //Create statement for list_table
-    private static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
+    public static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
             + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT UNIQUE" + ")";
     //Create statement for inventory_table
-    private static final String CREATE_INVENTORY_TABLE = "CREATE TABLE " + INVENTORY_TABLE
+    public static final String CREATE_INVENTORY_TABLE = "CREATE TABLE " + INVENTORY_TABLE
             + "(" + INVENTORY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + INVENTORY_NAME + " TEXT UNIQUE" + ")";
     //Create statement for listproduct_table
-    private static final String CREATE_LISTPRODUCT_TABLE = "CREATE TABLE " + LISTPRODUCT_TABLE
+    public static final String CREATE_LISTPRODUCT_TABLE = "CREATE TABLE " + LISTPRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER," + LIST_ID + " INTEGER," + QUANTITY + " INTEGER,"
             + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)," + " FOREIGN KEY(LIST_ID) REFERENCES LIST_TABLE(LIST_ID)" + ")";
     //Create statement for inventoryproduct_table
-    private static final String CREATE_INVENTORYPRODUCT_TABLE = "CREATE TABLE " + INVENTORYPRODUCT_TABLE
+    public static final String CREATE_INVENTORYPRODUCT_TABLE = "CREATE TABLE " + INVENTORYPRODUCT_TABLE
             + "(" + INVENTORY_ID + " INTEGER," + PRODUCT_ID + " INTEGER," + QUANTITY + " INTEGER,"
             + " FOREIGN KEY(INVENTORY_ID) REFERENCES INVENTORY_TABLE(INVENTORY_ID)," + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)" + ")";
 
