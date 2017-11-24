@@ -14,7 +14,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by SG0216351 on 11/1/2017.
+ * Database Helper makes it easier to use the sqlite database.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class AppDatabaseHelper extends SQLiteOpenHelper {

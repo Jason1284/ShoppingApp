@@ -18,7 +18,8 @@ import android.app.ListActivity;
 import java.util.ArrayList;
 
 /**
- * Created by Jason on 20171104.
+ * Use List will view the list requested in choose list or the new list from create list.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class UseList extends AppCompatActivity {

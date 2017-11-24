@@ -13,7 +13,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Jason on 20171104.
+ * Use Inventory will allow the user to see the items on each list requested from Choose list
+ * or create list and be able to add or remove items from them.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class UseInventory extends AppCompatActivity {

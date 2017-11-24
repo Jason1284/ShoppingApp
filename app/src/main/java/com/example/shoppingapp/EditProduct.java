@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+/**
+ * Edit Product will help to make updates and changed to items in the database.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
+ */
 public class EditProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

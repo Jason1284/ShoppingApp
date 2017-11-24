@@ -9,8 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-/*
-Created by Jason 20171103
+/**
+ * Choose Inventory will select and existing inventory list.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class choose_inventory extends AppCompatActivity {

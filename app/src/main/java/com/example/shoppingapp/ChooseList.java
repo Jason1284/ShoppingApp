@@ -12,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+/**
+ * Choose List will select a list on items that was already created
+ * @author Jason Steffan, Martin Cornelli, James Clarke
+ */
 public class ChooseList extends AppCompatActivity {
 
     //ListView listView;

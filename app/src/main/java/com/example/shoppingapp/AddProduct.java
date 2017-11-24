@@ -7,6 +7,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ * Add Product will add and item to the list or create it and add it to the database and the list.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
+ */
 public class AddProduct extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";

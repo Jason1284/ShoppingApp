@@ -11,7 +11,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 /**
- * Created by SG0216351 on 11/16/2017.
+ * Pick Existing will select an existing list in the database
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class PickExisting extends AppCompatActivity {

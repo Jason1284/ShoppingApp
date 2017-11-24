@@ -1,7 +1,8 @@
 package com.example.shoppingapp;
 
 /**
- * Created by SG0216351 on 11/3/2017.
+ * Product class helps to manage the database.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class Product {
