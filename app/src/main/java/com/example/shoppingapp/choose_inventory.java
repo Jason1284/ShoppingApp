@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 /**
- * Choose Inventory will select and existing inventory list.
+ * Choose Inventory classwill select and existing inventory list.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
@@ -41,6 +41,10 @@ public class choose_inventory extends AppCompatActivity {
 
     }
 
+    /**
+     * onChooseInventory
+     * @param view
+     */
     public void onChooseInventory(View view){
         Intent intent = new Intent(this, UseInventory.class);
         startActivity(intent);

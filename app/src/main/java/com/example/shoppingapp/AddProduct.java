@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * Add Product will add and item to the list or create it and add it to the database and the list.
+ * AddProduct class will add and item to the list or create it and add it to the database and the list.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 public class AddProduct extends AppCompatActivity {
@@ -31,6 +31,10 @@ public class AddProduct extends AppCompatActivity {
         FORWARD = message;
     }
 
+    /**
+     * addName adds the product name to the database
+     * @param view
+     */
     public void addName(View view){
         EditText nameText = (EditText) findViewById(R.id.editText);
         String name = nameText.getText().toString();
@@ -38,6 +42,10 @@ public class AddProduct extends AppCompatActivity {
         product.setName(name);
     }
 
+    /**
+     * addPrice adds the price of a product or item to the database
+     * @param view
+     */
     public void addPrice(View view){
         EditText priceText = (EditText) findViewById(R.id.editText3);
         String price = priceText.getText().toString();
@@ -45,6 +53,10 @@ public class AddProduct extends AppCompatActivity {
         product.setPrice(Integer.parseInt(price));
     }
 
+    /**
+     * addAisle adds the ailse location to the database
+     * @param view
+     */
     public void addAisle(View view){
         EditText aisleText = (EditText) findViewById(R.id.editText8);
         String aisle = aisleText.getText().toString();
@@ -52,6 +64,11 @@ public class AddProduct extends AppCompatActivity {
         product.setAisle(aisle);
     }
 
+    /**
+     * addQuantity adds the quantity of the product or item of a product
+     * a user wants to the database.
+     * @param view
+     */
     public void addQuantity(View view){
         EditText aisleText = (EditText) findViewById(R.id.editText4);
         String aisle = aisleText.getText().toString();
@@ -59,6 +76,10 @@ public class AddProduct extends AppCompatActivity {
         product.setAisle(aisle);
     }
 
+    /**
+     * onAddProduct allows user to select an item to add to the list in use.
+     * @param view
+     */
     public void onAddProduct(View view){
         AppDatabaseHelper newDb = new AppDatabaseHelper(this);
         newDb.addProduct(product);

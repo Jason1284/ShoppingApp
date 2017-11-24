@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 /**
- * Edit Product will help to make updates and changed to items in the database.
+ * Edit Product class will help to make updates and changed to items in the database.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 public class EditProduct extends AppCompatActivity {
@@ -19,6 +19,10 @@ public class EditProduct extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    public void editProduct(String name){}
+    /**
+     * onEditProduct
+     * @param name
+     */
+    public void onEditProduct(String name){}
 
 }

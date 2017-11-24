@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * This Class will take a list from the database and convert into a HTML formatted text to be sent
+ * Send List class will take a list from the database and convert into a HTML formatted text to be sent
  * by an app of the user's choice, such as email or text message.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  * @link https://developer.android.com/training/sharing/send.html
@@ -18,6 +18,7 @@ public class SendList extends AppCompatActivity {
     Button btnShare;
     Intent shareIntent;
     String shareBody = "This was sent with ACTION_SEND";
+
     /**
      * onCreate will allow the user to select a list to be sent vie HTML formatted text.
      * @param savedInstanceState to help the device save when app is paused.

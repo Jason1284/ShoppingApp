@@ -18,7 +18,7 @@ import android.app.ListActivity;
 import java.util.ArrayList;
 
 /**
- * Use List will view the list requested in choose list or the new list from create list.
+ * Use List class will view the list requested in choose list or the new list from create list.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
@@ -52,6 +52,10 @@ public class UseList extends AppCompatActivity {
 
     }
 
+    /**
+     * onAddProduct allows the user to add a product or item to the list in use.
+     * @param view
+     */
     public void onAddProduct(View view){
         Intent intent = new Intent(this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);

@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Database Helper makes it easier to use the sqlite database.
+ * AppDatabaseHelper class makes it easier to use the SQLite database.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
@@ -22,36 +22,40 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TAG = "APPDatabaseHelper";
 
-    //Database name and version
+    /**
+     * Database name and version
+     *
+     **/
     public static final int DATABASE_VERSION =    1;
     public static final String DATABASE_NAME = "PRODUCTS.db";
 
-    /**********************************************************
-     *              TABLE NAMES
-     **********************************************************/
+    /**
+     * TABLE NAMES
+     */
+
     public static final String PRODUCT_TABLE = "product_table";
     public static final String LISTPRODUCT_TABLE = "listproduct_table";
     public static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
     public static final String LIST_TABLE = "list_table";
     public static final String INVENTORY_TABLE = "inventory_table";
-    /**********************************************************
-     *              PRODUCT TABLE COLUMNS NAMES
-     **********************************************************/
+    /**
+     *PRODUCT TABLE COLUMNS NAMES
+     */
     public static final String PRODUCT_ID = "product_id";
     public static final String PRODUCT_NAME = "product_name";
     public static final String PRODUCT_PRICE = "price";
     public static final String PRODUCT_AISLE = "aisle";
     public static final String PRODUCT_VALUE = "value";
     public static final String PRODUCT_QUANTITY = "quantity";
-    /**********************************************************
-     *              LIST TABLE COLUMNS NAMES
-     **********************************************************/
+    /**
+     *LIST TABLE COLUMNS NAMES
+     */
     public static final String LIST_ID = "list_id";
     public static final String LIST_NAME = "list_name";
     public static final String QUANTITY = "quantity";
-    /**********************************************************
-     *              INVENTORY TABLE COLUMN NAMES
-     **********************************************************/
+    /**
+     *INVENTORY TABLE COLUMN NAMES
+     */
     public static final String INVENTORY_ID = "inventory_id";
     public static final String INVENTORY_NAME = "inventory_name";
 
@@ -75,13 +79,19 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
             + "(" + INVENTORY_ID + " INTEGER," + PRODUCT_ID + " INTEGER," + QUANTITY + " INTEGER,"
             + " FOREIGN KEY(INVENTORY_ID) REFERENCES INVENTORY_TABLE(INVENTORY_ID)," + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)" + ")";
 
-    /**********************************************************
-     *              DATABASE CREATION AND METHOD HANDLING
-     **********************************************************/
+    /**
+     *DATABASE CREATION AND METHOD HANDLING
+     * AppDatabaseHelper
+     * @param context
+     */
     public AppDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * OnCreate
+     * @param db SQLite database we are using to store lists and products to add to lists
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PRODUCT_TABLE);
@@ -91,12 +101,22 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_INVENTORYPRODUCT_TABLE);
      }
 
+    /**
+     * onUpgrade
+     * @param db SQLite database
+     * @param i
+     * @param i1
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
         onCreate(db);
     }
 
+    /**
+     * addProduct: adds product to the database
+     * @param product
+     */
     public void addProduct(Product product){
         Log.v(TAG, "Attempting to add Product");
         ContentValues values = new ContentValues();
@@ -111,6 +131,10 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         
     }
 
+    /**
+     * addList: add a list to the database
+     * @param listName
+     */
     public void addList(String listName){
         ContentValues values = new ContentValues();
         values.put(LIST_NAME, listName);
@@ -119,6 +143,10 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * addInventory: adds a new Inventory list to the database
+     * @param inventoryName
+     */
     public void addInventory(String inventoryName){
         ContentValues values = new ContentValues();
         values.put(INVENTORY_NAME, inventoryName);
@@ -127,6 +155,10 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * ArrayList the table of lists
+     * @return
+     */
     public ArrayList<String> feedNewList(){
         String query = "SELECT * FROM " + PRODUCT_TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -147,8 +179,17 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         return mProduct;
     }
 
+    /**
+     * editProduct enables the user to change a product property.
+     * @param name
+     */
     public void editProduct(String name){}
 
+    /**
+     * addListProduct adds a product in the database to a list in use.
+     * @param name
+     * @param product
+     */
     public void addListProduct(String name, Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         String insert;
@@ -159,6 +200,11 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * addInventoryProduct ass an item or product to an inventory list in use.
+     * @param name
+     * @param product
+     */
     public void addInventoryProduct(String name, Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         String insert;

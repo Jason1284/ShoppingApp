@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * Create Inventory will make a new List of inventory items that the user needs
+ * Create Inventory class will make a new List of inventory items that the user needs
  * to track and organize.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  */
@@ -28,6 +28,10 @@ public class CreateInventory extends AppCompatActivity {
 
     }
 
+    /**
+     * onNewInventory
+     * @param view
+     */
     public void onNewInventory(View view){
         Intent intent = new Intent(this, UseInventory.class);
         EditText editText = (EditText) findViewById(R.id.editText4);

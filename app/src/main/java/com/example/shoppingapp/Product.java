@@ -12,9 +12,9 @@ public class Product {
     private Integer value;
     private Integer quantity;
 
-    /**********************************************
-     *              CONSTRUCTORS
-     *********************************************/
+    /**
+     *CONSTRUCTORS
+     */
     public Product(){}
     public Product(String name, Integer price, String aisle, Integer quantity){
         this.name = name;
@@ -24,9 +24,9 @@ public class Product {
         this.quantity = quantity;
     }
 
-    /**********************************************
-     *              GETTERS
-     *********************************************/
+    /**
+     *GETTERS
+     */
     public String getName(){
         return name;
     }
@@ -43,9 +43,9 @@ public class Product {
 
     public Integer getQuantity(){return quantity; }
 
-    /**********************************************
-     *              SETTERS
-     *********************************************/
+    /**
+     *SETTERS
+     */
     public void setName(String name){
         this.name = name;
     }
