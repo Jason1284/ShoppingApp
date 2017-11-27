@@ -16,7 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by Jason on 20171104.
+ * Use Inventory class will allow the user to see the items on each list requested from Choose list
+ * or create list and be able to add or remove items from them.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class UseInventory extends AppCompatActivity {
@@ -63,6 +65,10 @@ public class UseInventory extends AppCompatActivity {
         editor.apply();
     }
 
+    /**
+     * onAddProduct allows user to add products or items to each inventory list in use
+     * @param view
+     */
     public void onAddProduct(View view){
         Intent intent = new Intent(this, AddProduct.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);

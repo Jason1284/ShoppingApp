@@ -15,7 +15,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by SG0216351 on 11/16/2017.
+ * Pick Existing class will select an existing list in the database
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class PickExisting extends AppCompatActivity {
@@ -54,6 +55,10 @@ public class PickExisting extends AppCompatActivity {
         }
     }
 
+    /**
+     * onAddNew
+     * @param view
+     */
     public void onAddNew(View view){
         Intent intent = new Intent(this, AddProduct.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);

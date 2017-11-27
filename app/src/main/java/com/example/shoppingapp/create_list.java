@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * Created by Jason on  20170311.
+ * Create List class will make a new list in the database so items can be added to it.
+ * @author Jason Steffan, Martin Cornelli, James Clarke
  */
 
 public class create_list extends AppCompatActivity {
@@ -25,6 +26,10 @@ public class create_list extends AppCompatActivity {
         Intent intent = getIntent();
     }
 
+    /**
+     * onNewList
+     * @param view
+     */
     public void onNewList(View view){
         Intent intent = new Intent(this, UseList.class);
 
