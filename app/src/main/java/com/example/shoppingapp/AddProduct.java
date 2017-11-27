@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class AddProduct extends AppCompatActivity {
@@ -12,6 +13,9 @@ public class AddProduct extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD;
     Product product = new Product();
+    Button addBtn = (Button) findViewById(R.id.button7);
+    Button backBtn = (Button) findViewById(R.id.button9);
+    AppDatabaseHelper newDb = new AppDatabaseHelper(this);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,45 +29,43 @@ public class AddProduct extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(PickExisting.EXTRA_MESSAGE);
         FORWARD = message;
+
+        addBtn.setOnClickListener((new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                EditText nameText = (EditText) findViewById(R.id.editText);
+                String name = nameText.getText().toString();
+
+                product.setName(name);
+
+                EditText priceText = (EditText) findViewById(R.id.editText3);
+                String price = priceText.getText().toString();
+
+                product.setPrice(Integer.parseInt(price));
+
+                EditText quantityText = (EditText) findViewById(R.id.editText4);
+                String quantity = quantityText.getText().toString();
+
+                product.setQuantity(Integer.parseInt(quantity));
+
+                EditText aisleText = (EditText) findViewById(R.id.editText8);
+                String aisle = aisleText.getText().toString();
+
+                product.setAisle(aisle);
+
+                newDb.addProduct(product);
+                newDb.addListProduct(FORWARD, product);
+            }
+        }));
+
+
     }
-
-    public void addName(View view){
-        EditText nameText = (EditText) findViewById(R.id.editText);
-        String name = nameText.getText().toString();
-
-        product.setName(name);
-    }
-
-    public void addPrice(View view){
-        EditText priceText = (EditText) findViewById(R.id.editText3);
-        String price = priceText.getText().toString();
-
-        product.setPrice(Integer.parseInt(price));
-    }
-
-    public void addAisle(View view){
-        EditText aisleText = (EditText) findViewById(R.id.editText8);
-        String aisle = aisleText.getText().toString();
-
-        product.setAisle(aisle);
-    }
-
-    public void addQuantity(View view){
-        EditText aisleText = (EditText) findViewById(R.id.editText4);
-        String aisle = aisleText.getText().toString();
-
-        product.setAisle(aisle);
-    }
-
-    public void onAddProduct(View view){
-        AppDatabaseHelper newDb = new AppDatabaseHelper(this);
-        newDb.addProduct(product);
-        newDb.addListProduct(FORWARD, product);
-
+    public void onBack(View v) {
         Intent intent = new Intent(this, UseList.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
-
-
 }
+
+

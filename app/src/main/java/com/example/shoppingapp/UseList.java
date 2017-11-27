@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.app.ListActivity;
@@ -23,12 +24,16 @@ import java.util.ArrayList;
 
 public class UseList extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
-    public static String FORWARD; 
+    public static String FORWARD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_list);
+
+        Button btnAdd;
+
+        btnAdd = (Button) findViewById(R.id.button12);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
@@ -42,21 +47,18 @@ public class UseList extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView3);
         textView.setText(message);
 
-
-
-
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("name", message);
         editor.apply();
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(UseList.this, PickExisting.class);
+                intent.putExtra(EXTRA_MESSAGE, FORWARD);
+                startActivity(intent);
+            }
+        });
     }
-
-    public void onAddProduct(View view){
-        Intent intent = new Intent(this, PickExisting.class);
-        intent.putExtra(EXTRA_MESSAGE, FORWARD);
-        startActivity(intent);
-    }
-
 
     public void onBoxCheck(View view){
 

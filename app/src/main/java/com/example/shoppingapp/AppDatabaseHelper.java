@@ -126,24 +126,10 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<String> feedNewList(){
-        String query = "SELECT * FROM " + PRODUCT_TABLE;
+    public Cursor feedNewList(){
         SQLiteDatabase db = this.getWritableDatabase();
-        ArrayList<String> mProduct = new ArrayList<String>();
-        Cursor c = db.rawQuery(query, null);
-
-
-        int Column1 = c.getColumnIndex(PRODUCT_NAME);
-        //int Column2 = c.getColumnIndex(PRODUCT_PRICE);
-
-
-        while (c.moveToNext()){
-            String Name = c.getString(Column1);
-            //int Price = c.getInt(Column2);
-            mProduct.add(Name/* + " " + Price*/);
-
-        }
-        return mProduct;
+        Cursor data = db.rawQuery("SELECT * FROM " + PRODUCT_TABLE, null);
+        return data;
     }
 
     public void editProduct(String name){}
