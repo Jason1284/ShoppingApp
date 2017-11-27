@@ -13,9 +13,8 @@ public class AddProduct extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD;
     Product product = new Product();
-    Button addBtn = (Button) findViewById(R.id.button7);
-    Button backBtn = (Button) findViewById(R.id.button9);
-    AppDatabaseHelper newDb = new AppDatabaseHelper(this);
+    Button addBtn;
+    AppDatabaseHelper newDb;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +28,9 @@ public class AddProduct extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(PickExisting.EXTRA_MESSAGE);
         FORWARD = message;
+
+        addBtn = (Button) findViewById(R.id.button7);
+        newDb = new AppDatabaseHelper(this);
 
         addBtn.setOnClickListener((new View.OnClickListener(){
 
@@ -67,5 +69,3 @@ public class AddProduct extends AppCompatActivity {
         startActivity(intent);
     }
 }
-
-
