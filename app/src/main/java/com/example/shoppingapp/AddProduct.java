@@ -97,7 +97,7 @@ public class AddProduct extends AppCompatActivity {
     }
 
     public void onBack(View v) {
-        Intent intent = new Intent(this, UseList.class);
+        Intent intent = new Intent(this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
