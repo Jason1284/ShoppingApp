@@ -53,11 +53,18 @@ public class PickExisting extends AppCompatActivity {
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.feedNewList();
+        String itemRow[] = new String[data.getCount()];
+        Product product = new Product();
+        int i = 0;
         if (data.getCount() == 0) {
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else {
             while (data.moveToNext()) {
-                theList.add(data.getString(1));
+                product.setName(data.getString(1));
+                product.setPrice(data.getInt(2));
+                itemRow[i] = product.getName() + "                                                          $" + product.getPrice();
+                theList.add(itemRow[i]);
+                i++;
             }
             ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
