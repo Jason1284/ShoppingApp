@@ -44,27 +44,34 @@ public class UseInventory extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView12);
         textView.setText(message);
 
-        ListView listView = (ListView) findViewById(R.id.listView);
-        myDB = new AppDatabaseHelper(this);
-
-        //populate an ArrayList<String> from the database and then view it
-        ArrayList<String> theList = new ArrayList<>();
-        Cursor data = myDB.feedNewList();
-        if(data.getCount() == 0){
-            Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_LONG).show();
-        }else{
-            while(data.moveToNext()){
-                theList.add(data.getString(1));
-                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
-                listView.setAdapter(listAdapter);
-            }
-        }
+        displayAll();
 
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE).edit();
         editor.putString("inventory", message);
         editor.apply();
     }
 
+    public void onResume(){
+        super.onResume();
+        displayAll();
+    }
+
+    public void displayAll() {
+
+        ListView listView = (ListView) findViewById(R.id.listView);
+        myDB = new AppDatabaseHelper(this);
+        ArrayList<String> theList = new ArrayList<>();
+        Cursor data = myDB.feedNewList();
+        if (data.getCount() == 0) {
+            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+        } else {
+            while (data.moveToNext()) {
+                theList.add(data.getString(1));
+            }
+            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
+        }
+    }
     /**
      * onAddProduct allows user to add products or items to each inventory list in use
      * @param view

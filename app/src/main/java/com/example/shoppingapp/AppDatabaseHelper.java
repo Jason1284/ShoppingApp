@@ -132,6 +132,18 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public Cursor allLists(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + LIST_TABLE, null);
+        return data;
+    }
+
+    public Cursor allInventories(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + INVENTORY_TABLE, null);
+        return data;
+    }
+
     public void editProduct(String name){}
 
     /*public void addListProduct(String name, Product product){
@@ -145,7 +157,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }*/
 
-    public void addInventoryProduct(String name, Product product){
+    /*public void addInventoryProduct(String name, Product product){
         SQLiteDatabase db = this.getWritableDatabase();
         String insert;
         insert = "INSERT INTO " + INVENTORYPRODUCT_TABLE + " (" + INVENTORY_ID + ", " + PRODUCT_ID + ", " + QUANTITY + ") VALUES (SELECT " + INVENTORY_ID + " FROM " + INVENTORY_TABLE +
@@ -153,6 +165,6 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 product.getQuantity() + ")";
         db.execSQL(insert);
         db.close();
-    }
+    }*/
 
 }
