@@ -31,9 +31,9 @@ public class UseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_list);
 
-        Button btnAdd;
+        //Button btnAdd;
 
-        btnAdd = (Button) findViewById(R.id.button12);
+        //btnAdd = (Button) findViewById(R.id.button12);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
@@ -51,13 +51,19 @@ public class UseList extends AppCompatActivity {
         editor.putString("name", message);
         editor.apply();
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        /*btnAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(UseList.this, PickExisting.class);
                 intent.putExtra(EXTRA_MESSAGE, FORWARD);
                 startActivity(intent);
             }
-        });
+        });*/
+    }
+
+    public void onAdd(View view){
+        Intent intent = new Intent(UseList.this, PickExisting.class);
+        intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        startActivity(intent);
     }
 
     public void onBoxCheck(View view){

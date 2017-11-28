@@ -57,8 +57,8 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     //Create statement for product_table
     public static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
-            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT UNIQUE,"
-            + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + "INTEGER DEFAULT 0," + PRODUCT_QUANTITY  + ")";
+            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
+            + PRODUCT_PRICE + " INTEGER," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + " INTEGER DEFAULT 0," + PRODUCT_QUANTITY  + " INTEGER" + ")";
     //Create statement for list_table
     public static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
             + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT UNIQUE" + ")";
@@ -103,7 +103,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         values.put(PRODUCT_PRICE, product.getPrice());
         values.put(PRODUCT_AISLE, product.getAisle());
         values.put(PRODUCT_VALUE, product.getValue());
-        values.put(PRODUCT_QUANTITY, product.getValue());
+        values.put(PRODUCT_QUANTITY, product.getQuantity());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         Log.d(TAG, "Product has been added");
@@ -134,15 +134,16 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     public void editProduct(String name){}
 
-    public void addListProduct(String name, Product product){
+    /*public void addListProduct(String name, Product product){
         SQLiteDatabase db = this.getWritableDatabase();
-        String insert;
-        insert = "INSERT INTO " + LISTPRODUCT_TABLE + " (" + LIST_ID + ", " + PRODUCT_ID + ", " + QUANTITY + ") VALUES (SELECT " + LIST_ID + " FROM " + LIST_TABLE +
+          insert = "INSERT INTO " + LISTPRODUCT_TABLE + " (" + LIST_ID + ", " + PRODUCT_ID + ", " + QUANTITY + ") VALUES (SELECT " + LIST_ID + " FROM " + LIST_TABLE +
                 " WHERE " + LIST_NAME + " = '" + name + "', SELECT " + PRODUCT_ID + " FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_NAME + " = '" + product.getName() + "', " +
         product.getQuantity() + ")";
+        ContentValues values = new ContentValues();
+        values.put();
         db.execSQL(insert);
         db.close();
-    }
+    }*/
 
     public void addInventoryProduct(String name, Product product){
         SQLiteDatabase db = this.getWritableDatabase();

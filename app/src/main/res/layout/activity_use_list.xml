@@ -109,6 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="16dp"
         android:text="Add New"
+        android:onClick="onAdd"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="516dp" />

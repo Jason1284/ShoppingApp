@@ -34,24 +34,33 @@ public class PickExisting extends AppCompatActivity {
         getSupportActionBar().setTitle("Pick Item");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //Intent intent = getIntent();
-        //String message = intent.getStringExtra(UseList.EXTRA_MESSAGE);
-        //FORWARD = message;
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(UseList.EXTRA_MESSAGE);
+        FORWARD = message;
+
+        displayAll();
+
+    }
+
+    protected void onResume(){
+        super.onResume();
+        displayAll();
+    }
+
+    public void displayAll() {
 
         ListView listView = (ListView) findViewById(R.id.listView);
         myDB = new AppDatabaseHelper(this);
-
-        //populate an ArrayList<String> from the database and then view it
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.feedNewList();
-        if(data.getCount() == 0){
-            Toast.makeText(this, "There are no contents in this list!",Toast.LENGTH_LONG).show();
-        }else{
-            while(data.moveToNext()){
+        if (data.getCount() == 0) {
+            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+        } else {
+            while (data.moveToNext()) {
                 theList.add(data.getString(1));
-                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,theList);
-                listView.setAdapter(listAdapter);
             }
+            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
+            listView.setAdapter(listAdapter);
         }
     }
 
