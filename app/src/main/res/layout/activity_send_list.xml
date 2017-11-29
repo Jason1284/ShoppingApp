@@ -16,18 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar8" />
 
-    <ExpandableListView
-        android:id="@+id/expandableListView"
-        android:layout_width="373dp"
-        android:layout_height="404dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar8"
         android:layout_width="0dp"
@@ -45,7 +33,7 @@
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/buttonshape"
         android:text="@string/sendList"
         android:textColor="@android:color/white"
@@ -53,6 +41,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/expandableListView" />
+        app:layout_constraintTop_toBottomOf="@+id/listView4" />
+
+    <ListView
+        android:id="@+id/listView4"
+        android:layout_width="378dp"
+        android:layout_height="431dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </android.support.constraint.ConstraintLayout>

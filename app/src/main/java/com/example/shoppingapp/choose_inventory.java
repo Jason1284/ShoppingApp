@@ -56,7 +56,7 @@ public class choose_inventory extends AppCompatActivity {
 
     public void displayAll() {
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.InventoryView100);
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.allInventories();
