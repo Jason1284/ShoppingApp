@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.app.ListActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jason on 20171104.
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 public class UseList extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD;
+
+    AppDatabaseHelper myDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,17 @@ public class UseList extends AppCompatActivity {
         editor.putString("name", message);
         editor.apply();
 
-        /*btnAdd.setOnClickListener(new View.OnClickListener() {
+        // Setup the list view
+        final ListView productListView = (ListView) findViewById(R.id.listView2);
+        final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
+        productListView.setAdapter(productListAdapter);
+
+        // Populate the list, through the adapter
+        for(final ProductList entry : getProducts()) {
+            productListAdapter.add(entry);
+        }
+
+                /*btnAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(UseList.this, PickExisting.class);
                 intent.putExtra(EXTRA_MESSAGE, FORWARD);
@@ -59,6 +72,25 @@ public class UseList extends AppCompatActivity {
             }
         });*/
     }
+
+        private List<ProductList> getProducts() {
+
+            final List<ProductList> entries = new ArrayList<ProductList>();
+
+            for(int i = 1; i < 50; i++) {
+                entries.add(
+                        new ProductList(
+                                "7 ",
+                                "Pizza entry " + i,
+                                "$10"
+                        )
+                );
+            }
+
+            return entries;
+        }
+
+
 
     public void onAdd(View view){
         Intent intent = new Intent(UseList.this, PickExisting.class);
