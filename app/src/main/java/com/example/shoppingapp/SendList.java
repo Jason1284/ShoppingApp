@@ -8,26 +8,31 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 import java.util.ArrayList;
 
 /**
- * Send List class will take a list from the database and convert into a HTML formatted text to be sent
- * by an app of the user's choice, such as email or text message.
+ * Send List class will take a list from the database and convert into a HTML formatted text
+ *  to be sent by an app of the user's choice, such as email or text message.
  * @author Jason Steffan, Martin Cornelli, James Clarke
  * @link https://developer.android.com/training/sharing/send.html
  */
-public class SendList extends AppCompatActivity {
+public class SendList extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     Button btnShare;
     Intent shareIntent;
     String shareBody = "This was sent with ACTION_SEND";
     AppDatabaseHelper myDB;
+    ListView listView;
+
     /**
      * onCreate will allow the user to select a list to be sent vie HTML formatted text.
      * @param savedInstanceState to help the device save when app is paused.
@@ -54,10 +59,12 @@ public class SendList extends AppCompatActivity {
         if(message != "")
             toast.show();
 
+
         /* change shareBody to take the list we selected like in choose list/inventory!*/
-        // shareBody = selectedList;
+        //shareBody = myDB.toString();
 
         btnShare = findViewById(R.id.button6);
+        //listView = findViewById(R.id.listView4);
 
         btnShare.setOnClickListener(new View.OnClickListener() {
 
@@ -69,13 +76,13 @@ public class SendList extends AppCompatActivity {
                 startActivity(Intent.createChooser(shareIntent, "share via"));
             }
         });
-
         displayAll();
+
     }
 
     public void displayAll() {
 
-        ListView listView = (ListView) findViewById(R.id.listView4);
+        listView = (ListView) findViewById(R.id.listView4);
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.allLists();
@@ -89,5 +96,20 @@ public class SendList extends AppCompatActivity {
             ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
         }
+
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        TextView textView = (TextView) view;
+        //shareBody = textView.getText();
+        Toast.makeText(this, "You selected" + textView.getText() + position, Toast.LENGTH_SHORT).show();
+
+        shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+        shareIntent.setType("text/html");
+        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Action Send");
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(shareIntent, "share via"));
     }
 }
