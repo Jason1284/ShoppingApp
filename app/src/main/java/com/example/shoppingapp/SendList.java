@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * @author Jason Steffan, Martin Cornelli, James Clarke
  * @link https://developer.android.com/training/sharing/send.html
  */
-public class SendList extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class SendList extends AppCompatActivity{
 
     Button btnShare;
     Intent shareIntent;
@@ -77,8 +77,11 @@ public class SendList extends AppCompatActivity implements AdapterView.OnItemCli
             }
         });
         displayAll();
+        registerClickCallback();
 
     }
+
+
 
     public void displayAll() {
 
@@ -100,10 +103,24 @@ public class SendList extends AppCompatActivity implements AdapterView.OnItemCli
 
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    private void registerClickCallback() {
+        listView = (ListView) findViewById(R.id.listView4);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            private AdapterView parent;
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                this.parent = parent;
+                TextView textView = (TextView) viewClicked;
+                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                Toast.makeText(SendList.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /*public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         TextView textView = (TextView) view;
-        //shareBody = textView.getText();
+        shareBody = textView.toString().t;
         Toast.makeText(this, "You selected" + textView.getText() + position, Toast.LENGTH_SHORT).show();
 
         shareIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -111,5 +128,5 @@ public class SendList extends AppCompatActivity implements AdapterView.OnItemCli
         shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Action Send");
         shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
         startActivity(Intent.createChooser(shareIntent, "share via"));
-    }
+    }*/
 }
