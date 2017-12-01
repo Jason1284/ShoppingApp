@@ -27,7 +27,7 @@ import java.util.ArrayList;
  */
 public class SendList extends AppCompatActivity{
 
-    Button btnShare;
+    //Button btnShare;
     Intent shareIntent;
     String shareBody = "This was sent with ACTION_SEND";
     AppDatabaseHelper myDB;
@@ -63,7 +63,7 @@ public class SendList extends AppCompatActivity{
         /* change shareBody to take the list we selected like in choose list/inventory!*/
         //shareBody = myDB.toString();
 
-        btnShare = findViewById(R.id.button6);
+        /*btnShare = findViewById(R.id.button6);
         //listView = findViewById(R.id.listView4);
 
         btnShare.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class SendList extends AppCompatActivity{
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(shareIntent, "share via"));
             }
-        });
+        });*/
         displayAll();
         registerClickCallback();
 
