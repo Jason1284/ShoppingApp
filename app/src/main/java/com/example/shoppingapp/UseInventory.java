@@ -58,7 +58,7 @@ public class UseInventory extends AppCompatActivity {
 
     public void displayAll() {
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView3);
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.feedNewList();

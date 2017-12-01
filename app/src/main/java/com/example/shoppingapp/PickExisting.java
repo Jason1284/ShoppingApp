@@ -6,12 +6,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ public class PickExisting extends AppCompatActivity {
     public static String FORWARD;
 
     AppDatabaseHelper myDB;
+    ListView listView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,17 +41,18 @@ public class PickExisting extends AppCompatActivity {
         FORWARD = message;
 
         displayAll();
-
+        registerClick();
     }
 
     protected void onResume(){
         super.onResume();
         displayAll();
+        registerClick();
     }
 
     public void displayAll() {
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listViewPick);
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.feedNewList();
@@ -80,5 +81,26 @@ public class PickExisting extends AppCompatActivity {
         Intent intent = new Intent(this, AddProduct.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
+    }
+
+    /**
+     * registerClick will make the list items clickable so we can send the items in
+     * each list to a text app of the users choice.
+     * @link https://www.youtube.com/watch?v=eAPFgC9URqc
+     * was used to get this part working.
+     */
+    private void registerClick() {
+        listView = (ListView) findViewById(R.id.listViewPick);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            private AdapterView parent;
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                this.parent = parent;
+                TextView textView = (TextView) viewClicked;
+                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                Toast.makeText(PickExisting.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

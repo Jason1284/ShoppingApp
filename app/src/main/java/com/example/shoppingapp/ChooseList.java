@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -62,7 +61,7 @@ public class ChooseList extends AppCompatActivity {
 
     public void displayAll() {
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) findViewById(R.id.listView21);
         myDB = new AppDatabaseHelper(this);
         ArrayList<String> theList = new ArrayList<>();
         Cursor data = myDB.allLists();
@@ -94,7 +93,7 @@ public class ChooseList extends AppCompatActivity {
      * was used to get this part working.
      */
     private void registerClick() {
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView21);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             private AdapterView parent;
 
