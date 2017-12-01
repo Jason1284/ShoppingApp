@@ -8,12 +8,12 @@ package com.example.shoppingapp;
 public final class ProductList {
 
     private final String quantity;
-    private final String product;
+    private final String name;
     private final String price;
 
     public ProductList(final String quantity, final String product, final String price) {
         this.quantity = quantity;
-        this.product = product;
+        this.name = product;
         this.price = price;
     }
 
@@ -22,7 +22,7 @@ public final class ProductList {
     }
 
     public String getProduct() {
-        return product;
+        return name;
     }
 
     public String getPrice() {

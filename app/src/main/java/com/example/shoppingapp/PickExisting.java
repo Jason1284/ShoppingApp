@@ -63,7 +63,7 @@ public class PickExisting extends AppCompatActivity {
         } else {
             while (data.moveToNext()) {
                 product.setName(data.getString(1));
-                product.setPrice(data.getInt(2));
+                product.setPrice(data.getString(2));
                 itemRow[i] = product.getName() + "                                                          $" + product.getPrice();
                 theList.add(itemRow[i]);
                 i++;

@@ -7,16 +7,16 @@ package com.example.shoppingapp;
 
 public class Product {
     private String name;
-    private Integer price;
+    private String price;
     private String aisle;
     private Integer value;
-    private Integer quantity;
+    private String quantity;
 
     /**
      *CONSTRUCTORS
      */
     public Product(){}
-    public Product(String name, Integer price, String aisle, Integer quantity){
+    public Product(String name, String price, String aisle, String quantity){
         this.name = name;
         this.price = price;
         this.aisle = aisle;
@@ -31,7 +31,7 @@ public class Product {
         return name;
     }
 
-    public Integer getPrice(){
+    public String getPrice(){
         return price;
     }
 
@@ -41,7 +41,7 @@ public class Product {
 
     public Integer getValue(){return value; }
 
-    public Integer getQuantity(){return quantity; }
+    public String getQuantity(){return quantity; }
 
     /**
      *SETTERS
@@ -50,7 +50,7 @@ public class Product {
         this.name = name;
     }
 
-    public void setPrice(Integer price){
+    public void setPrice(String price){
         this.price = price;
     }
 
@@ -60,5 +60,5 @@ public class Product {
 
     public void setValue(Integer value){this.value = value; }
 
-    public void setQuantity(Integer quantity){this.quantity = quantity; }
+    public void setQuantity(String quantity){this.quantity = quantity; }
 }

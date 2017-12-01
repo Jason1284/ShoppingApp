@@ -80,8 +80,8 @@ public class AddProduct extends AppCompatActivity {
 
         //Setting product with input information
         product.setName(name);
-        product.setPrice(Integer.parseInt(price));
-        product.setQuantity(Integer.parseInt(quantity));
+        product.setPrice(price);
+        product.setQuantity(quantity);
         product.setAisle(aisle);
 
         //Clearing fields

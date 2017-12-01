@@ -12,9 +12,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.app.ListActivity;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +77,7 @@ public class UseList extends AppCompatActivity {
 
         private List<ProductList> getProducts() {
 
-            final List<ProductList> entries = new ArrayList<ProductList>();
+            /*final List<ProductList> entries = new ArrayList<ProductList>();
 
             for(int i = 1; i < 50; i++) {
                 entries.add(
@@ -87,7 +89,20 @@ public class UseList extends AppCompatActivity {
                 );
             }
 
-            return entries;
+            return entries;*/
+            myDB = new AppDatabaseHelper(this);
+            List<ProductList> theList = new ArrayList<ProductList>();
+            Cursor data = myDB.feedNewList();
+            ProductList product;
+            if (data.getCount() == 0) {
+                Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+            } else {
+                while (data.moveToNext()) {
+                    product = new ProductList(data.getString(5), data.getString(1), data.getString(2));
+                    theList.add(product);
+                }
+            }
+            return theList;
         }
 
 
