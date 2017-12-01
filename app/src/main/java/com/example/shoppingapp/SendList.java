@@ -77,12 +77,13 @@ public class SendList extends AppCompatActivity{
             }
         });*/
         displayAll();
-        registerClickCallback();
+        registerClick();
 
     }
 
-
-
+    /**
+     * displayAll will show us all of the lists used for shopping only
+     */
     public void displayAll() {
 
         listView = (ListView) findViewById(R.id.listView4);
@@ -103,7 +104,13 @@ public class SendList extends AppCompatActivity{
 
     }
 
-    private void registerClickCallback() {
+    /**
+     * registerClick will make the list items clickable so we can send the items in
+     * each list to a text app of the users choice.
+     * @link https://www.youtube.com/watch?v=eAPFgC9URqc
+     * was used to get this part working.
+     */
+    private void registerClick() {
         listView = (ListView) findViewById(R.id.listView4);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             private AdapterView parent;
@@ -119,7 +126,7 @@ public class SendList extends AppCompatActivity{
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Shopping List");
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
-                startActivity(Intent.createChooser(shareIntent, "share via"));
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
             }
         });
     }
