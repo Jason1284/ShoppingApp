@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
  */
 public class ChooseList extends AppCompatActivity {
 
-    //ListView listView;
+    ListView listView;
     AppDatabaseHelper myDB;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,26 +50,14 @@ public class ChooseList extends AppCompatActivity {
             toast.show();
 
         displayAll();
-
-        //This is just code awaiting for how the List of list names is going to be passed from the database
-        //by J. Clarke
-        /*listView = (ListView) findViewById(R.id.listView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(this, UseList.class);
-                intent.putExtra("ListName", listView.getItemIdAtPosition(position).toString());
-                AppDatabaseHelper newList = new AppDatabaseHelper(this);
-                newList.addList(ListName);
-                startActivity(intent);
-            }
-        });*/
+        registerClick();
 
     }
 
     public void onResume(){
         super.onResume();
         displayAll();
+        registerClick();
     }
 
     public void displayAll() {
@@ -96,6 +85,27 @@ public class ChooseList extends AppCompatActivity {
     public void onChooseList(View view){
         Intent intent = new Intent(this, UseList.class);
         startActivity(intent);
+    }
+
+    /**
+     * registerClick will make the list items clickable so we can send the items in
+     * each list to a text app of the users choice.
+     * @link https://www.youtube.com/watch?v=eAPFgC9URqc
+     * was used to get this part working.
+     */
+    private void registerClick() {
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            private AdapterView parent;
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
+                this.parent = parent;
+                TextView textView = (TextView) viewClicked;
+                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                Toast.makeText(ChooseList.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
 
