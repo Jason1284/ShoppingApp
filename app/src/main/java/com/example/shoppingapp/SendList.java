@@ -114,19 +114,13 @@ public class SendList extends AppCompatActivity{
                 TextView textView = (TextView) viewClicked;
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(SendList.this, message, Toast.LENGTH_SHORT).show();
+
+                shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Shopping List");
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(shareIntent, "share via"));
             }
         });
     }
-
-    /*public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        TextView textView = (TextView) view;
-        shareBody = textView.toString().t;
-        Toast.makeText(this, "You selected" + textView.getText() + position, Toast.LENGTH_SHORT).show();
-
-        shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-        shareIntent.setType("text/html");
-        shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "My Action Send");
-        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-        startActivity(Intent.createChooser(shareIntent, "share via"));
-    }*/
 }
