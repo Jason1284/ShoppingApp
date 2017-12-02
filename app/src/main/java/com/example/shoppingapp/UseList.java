@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.app.ListActivity;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class UseList extends AppCompatActivity {
 
         private List<ProductList> getProducts() {
 
+
             /*final List<ProductList> entries = new ArrayList<ProductList>();
 
             for(int i = 1; i < 50; i++) {
@@ -90,6 +92,13 @@ public class UseList extends AppCompatActivity {
             }
 
             return entries;*/
+
+
+            float rowPrice = 0;
+            float rowQuantity = 0;
+            float finalTotal = 0;
+
+
             myDB = new AppDatabaseHelper(this);
             List<ProductList> theList = new ArrayList<ProductList>();
             Cursor data = myDB.feedNewList();
@@ -100,8 +109,16 @@ public class UseList extends AppCompatActivity {
                 while (data.moveToNext()) {
                     product = new ProductList(data.getString(5), data.getString(1), data.getString(2));
                     theList.add(product);
+                    rowPrice = Float.valueOf(data.getString(2));
+                    rowQuantity = Float.valueOf(data.getString(5));
+                    finalTotal += (rowPrice * rowQuantity);
                 }
             }
+
+
+            TextView updateTotal = (TextView) findViewById(R.id.textView7);
+            updateTotal.setText("$" + String.format("%.2f", finalTotal));
+
             return theList;
         }
 
