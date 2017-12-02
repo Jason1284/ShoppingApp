@@ -37,10 +37,7 @@ public class UseList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_use_list);
 
-        //Button btnAdd;
-
-        //btnAdd = (Button) findViewById(R.id.button12);
-
+        //Tool Bar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar10);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Shopping List");

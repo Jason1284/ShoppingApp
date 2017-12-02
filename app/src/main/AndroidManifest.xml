@@ -53,15 +53,39 @@
         </activity>
         <activity android:name="com.example.shoppingapp.create_list"
             android:parentActivityName=".MainActivity" >
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity android:name="com.example.shoppingapp.UseList"
             android:parentActivityName=".create_list" >
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".create_list" />
         </activity>
         <activity android:name="com.example.shoppingapp.PickExisting"
             android:parentActivityName=".UseList" >
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UseList" />
         </activity>
-        <activity android:name=".choose_inventory" />
-        <activity android:name=".UseInventory" />
+        <activity android:name=".choose_inventory"
+            android:parentActivityName=".MainActivity" >
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".UseInventory"
+            android:parentActivityName=".CreateInventory" >
+        <!-- The meta-data tag is required if you support API level 15 and lower -->
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".CreateInventory" />
+        </activity>
 
     </application>
 

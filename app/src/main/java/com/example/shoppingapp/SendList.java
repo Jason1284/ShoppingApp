@@ -119,6 +119,8 @@ public class SendList extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 this.parent = parent;
                 TextView textView = (TextView) viewClicked;
+
+                // message needs to receive the string array from the list selected
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(SendList.this, message, Toast.LENGTH_SHORT).show();
 

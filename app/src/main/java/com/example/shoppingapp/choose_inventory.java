@@ -36,7 +36,7 @@ public class choose_inventory extends AppCompatActivity {
         getSupportActionBar().setTitle("Choose Inventory");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
 
         SharedPreferences prefs = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE);
         String message = prefs.getString("inventory", "");

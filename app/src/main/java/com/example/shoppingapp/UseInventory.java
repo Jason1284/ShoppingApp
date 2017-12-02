@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Use Inventory class will allow the user to see the items on each list requested from Choose list
@@ -49,6 +50,16 @@ public class UseInventory extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE).edit();
         editor.putString("inventory", message);
         editor.apply();
+
+        // Setup the list view
+        final ListView productListView = (ListView) findViewById(R.id.listView3);
+        final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
+        productListView.setAdapter(productListAdapter);
+
+        // Populate the list, through the adapter
+        for(final ProductList entry : getProducts()) {
+            productListAdapter.add(entry);
+        }
     }
 
     public void onResume(){
@@ -77,8 +88,38 @@ public class UseInventory extends AppCompatActivity {
      * @param view
      */
     public void onAddProduct(View view){
-        Intent intent = new Intent(this, AddProduct.class);
+        Intent intent = new Intent(this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
+    }
+
+    private List<ProductList> getProducts() {
+
+            /*final List<ProductList> entries = new ArrayList<ProductList>();
+
+            for(int i = 1; i < 50; i++) {
+                entries.add(
+                        new ProductList(
+                                "7 ",
+                                "Pizza entry " + i,
+                                "$10"
+                        )
+                );
+            }
+
+            return entries;*/
+        myDB = new AppDatabaseHelper(this);
+        List<ProductList> theList = new ArrayList<ProductList>();
+        Cursor data = myDB.feedNewList();
+        ProductList product;
+        if (data.getCount() == 0) {
+            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+        } else {
+            while (data.moveToNext()) {
+                product = new ProductList(data.getString(5), data.getString(1), data.getString(2));
+                theList.add(product);
+            }
+        }
+        return theList;
     }
 }
