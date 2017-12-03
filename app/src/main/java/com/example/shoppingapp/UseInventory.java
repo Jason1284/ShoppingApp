@@ -45,24 +45,24 @@ public class UseInventory extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView12);
         textView.setText(message);
 
-        displayAll();
+        //displayAll();
 
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE).edit();
         editor.putString("inventory", message);
         editor.apply();
 
         // Setup the list view
-        final ListView productListView = (ListView) findViewById(R.id.listView3);
-        final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
-        productListView.setAdapter(productListAdapter);
+        final ListView productListViewReduced = (ListView) findViewById(R.id.listView3);
+        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
+        productListViewReduced.setAdapter(productListAdapterReduced);
 
         // Populate the list, through the adapter
-        for(final ProductList entry : getProducts()) {
-            productListAdapter.add(entry);
+        for(final ProductListReduced entry : getProducts()) {
+            productListAdapterReduced.add(entry);
         }
     }
 
-    public void onResume(){
+    /*public void onResume(){
         super.onResume();
         displayAll();
     }
@@ -93,30 +93,19 @@ public class UseInventory extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private List<ProductList> getProducts() {
+    private List<ProductListReduced> getProducts() {
 
-            /*final List<ProductList> entries = new ArrayList<ProductList>();
-
-            for(int i = 1; i < 50; i++) {
-                entries.add(
-                        new ProductList(
-                                "7 ",
-                                "Pizza entry " + i,
-                                "$10"
-                        )
-                );
-            }
-
-            return entries;*/
         myDB = new AppDatabaseHelper(this);
-        List<ProductList> theList = new ArrayList<ProductList>();
+        float tempPrice = 0;
+        List<ProductListReduced> theList = new ArrayList<ProductListReduced>();
         Cursor data = myDB.feedNewList();
-        ProductList product;
+        ProductListReduced product;
         if (data.getCount() == 0) {
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else {
             while (data.moveToNext()) {
-                product = new ProductList(data.getString(5), data.getString(1), data.getString(2), data.getString(3));
+                tempPrice = Float.valueOf(data.getString(2));
+                product = new ProductListReduced(data.getString(1),  "$" + String.format("%.2f", tempPrice), data.getString(3));
                 theList.add(product);
             }
         }

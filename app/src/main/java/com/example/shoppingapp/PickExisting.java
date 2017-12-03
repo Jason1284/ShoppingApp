@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Pick Existing class will select an existing list in the database
@@ -40,17 +41,27 @@ public class PickExisting extends AppCompatActivity {
         String message = intent.getStringExtra(UseList.EXTRA_MESSAGE);
         FORWARD = message;
 
-        displayAll();
+        // Setup the list view
+        final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
+        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
+        productListViewReduced.setAdapter(productListAdapterReduced);
+
+        // Populate the list, through the adapter
+        for(final ProductListReduced entry : getProducts()) {
+            productListAdapterReduced.add(entry);
+        }
+
+        //displayAll();
         registerClick();
     }
 
     protected void onResume(){
         super.onResume();
-        displayAll();
+        //displayAll();
         registerClick();
     }
 
-    public void displayAll() {
+    /*public void displayAll() {
 
         ListView listView = (ListView) findViewById(R.id.listViewPick);
         myDB = new AppDatabaseHelper(this);
@@ -72,6 +83,24 @@ public class PickExisting extends AppCompatActivity {
             final ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
         }
+    }*/
+    private List<ProductListReduced> getProducts() {
+
+        myDB = new AppDatabaseHelper(this);
+        float tempPrice = 0;
+        List<ProductListReduced> theList = new ArrayList<ProductListReduced>();
+        Cursor data = myDB.feedNewList();
+        ProductListReduced product;
+        if (data.getCount() == 0) {
+            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+        } else {
+            while (data.moveToNext()) {
+                tempPrice = Float.valueOf(data.getString(2));
+                product = new ProductListReduced(data.getString(1),  "$" + String.format("%.2f", tempPrice), data.getString(3));
+                theList.add(product);
+            }
+        }
+        return theList;
     }
     /**
      * onAddNew

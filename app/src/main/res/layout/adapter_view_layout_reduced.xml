@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+
+    <TextView
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="Product"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/textViewProduct"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_weight="27" />
+
+
+
+    <TextView
+        android:id="@+id/textViewAisle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="33"
+        android:gravity="center_vertical"
+        android:text="Aisle"
+        android:textAlignment="center"
+        android:textSize="16dp"/>
+
+
+    <TextView
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:text="$10.00"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="16dp"
+        android:id="@+id/textViewPrice"
+        android:layout_weight="40"/>
+
+
+</LinearLayout>
