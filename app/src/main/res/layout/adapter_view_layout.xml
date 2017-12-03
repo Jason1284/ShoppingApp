@@ -10,7 +10,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="30">
+        android:layout_weight="23">
 
     <CheckBox
         android:layout_width="match_parent"
@@ -27,19 +27,32 @@
         android:text="Q#"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textSize="16dp"
         android:id="@+id/textViewQuantity"
-        android:layout_weight="28" />
-
-
+        android:layout_weight="22" />
 
     <TextView
         android:gravity="center_vertical"
-        android:text="Product"
         android:textAlignment="center"
+        android:text="Product"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/textViewProduct"
-        android:layout_weight="15"/>
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_weight="15" />
+
+
+    <TextView
+        android:id="@+id/textViewAisle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="21"
+        android:gravity="center_vertical"
+        android:text="Aisle"
+        android:textAlignment="center"
+        android:textSize="16dp"/>
+
 
     <TextView
         android:gravity="center_vertical"
@@ -47,8 +60,9 @@
         android:text="$10.00"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:textSize="16dp"
         android:id="@+id/textViewPrice"
-        android:layout_weight="27"/>
+        android:layout_weight="19"/>
 
 
 </LinearLayout>

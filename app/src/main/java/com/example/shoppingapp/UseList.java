@@ -64,32 +64,9 @@ public class UseList extends AppCompatActivity {
             productListAdapter.add(entry);
         }
 
-                /*btnAdd.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(UseList.this, PickExisting.class);
-                intent.putExtra(EXTRA_MESSAGE, FORWARD);
-                startActivity(intent);
-            }
-        });*/
     }
 
         private List<ProductList> getProducts() {
-
-
-            /*final List<ProductList> entries = new ArrayList<ProductList>();
-
-            for(int i = 1; i < 50; i++) {
-                entries.add(
-                        new ProductList(
-                                "7 ",
-                                "Pizza entry " + i,
-                                "$10"
-                        )
-                );
-            }
-
-            return entries;*/
-
 
             float rowPrice = 0;
             float rowQuantity = 0;
@@ -106,7 +83,7 @@ public class UseList extends AppCompatActivity {
             } else {
                 while (data.moveToNext()) {
                     tempPrice = Float.valueOf(data.getString(2));
-                    product = new ProductList(data.getString(5), data.getString(1), "$" + String.format("%.2f", tempPrice));
+                    product = new ProductList(data.getString(5), data.getString(1), "$" + String.format("%.2f", tempPrice), data.getString(3));
                     theList.add(product);
                     rowPrice = Float.valueOf(data.getString(2));
                     rowQuantity = Float.valueOf(data.getString(5));

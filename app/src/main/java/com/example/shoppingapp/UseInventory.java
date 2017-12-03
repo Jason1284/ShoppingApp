@@ -116,7 +116,7 @@ public class UseInventory extends AppCompatActivity {
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else {
             while (data.moveToNext()) {
-                product = new ProductList(data.getString(5), data.getString(1), data.getString(2));
+                product = new ProductList(data.getString(5), data.getString(1), data.getString(2), data.getString(3));
                 theList.add(product);
             }
         }

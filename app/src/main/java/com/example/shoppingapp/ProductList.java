@@ -10,11 +10,13 @@ public final class ProductList {
     private final String quantity;
     private final String name;
     private final String price;
+    private final String aisle;
 
-    public ProductList(final String quantity, final String product, final String price) {
+    public ProductList(final String quantity, final String product, final String price, final String aisle) {
         this.quantity = quantity;
         this.name = product;
         this.price = price;
+        this.aisle = aisle;
     }
 
     public String getQuantity() {
@@ -28,4 +30,7 @@ public final class ProductList {
     public String getPrice() {
         return price;
     }
+
+    public String getAisle() { return aisle; }
+
 }

@@ -42,6 +42,9 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
         // Setting image view is also simple
         viewHolder.quantityTextView.setText(entry.getQuantity());
 
+        viewHolder.aisleTextView.setText(entry.getAisle());
+
+
         return view;
     }
 
@@ -76,6 +79,7 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
             viewHolder.priceTextView = (TextView) workingView.findViewById(R.id.textViewPrice);
             viewHolder.productTextView = (TextView) workingView.findViewById(R.id.textViewProduct);
             viewHolder.quantityTextView = (TextView) workingView.findViewById(R.id.textViewQuantity);
+            viewHolder.aisleTextView = (TextView) workingView.findViewById(R.id.textViewAisle);
 
             workingView.setTag(viewHolder);
 
@@ -90,5 +94,6 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
         public TextView priceTextView;
         public TextView productTextView;
         public TextView quantityTextView;
+        public TextView aisleTextView;
     }
 }
