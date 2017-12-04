@@ -120,7 +120,8 @@ public class UseList extends AppCompatActivity {
         } else{
             for (int i = 0; i < receivedList.size(); i++){
                 tempProduct = receivedList.get(i);
-                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), tempProduct.getPrice(), tempProduct.getAisle());
+                tempPrice = Float.valueOf(tempProduct.getPrice());
+                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle());
                 theList.add(productList);
                 rowPrice = Float.valueOf(tempProduct.getPrice());
                 rowQuantity = Float.valueOf(tempProduct.getQuantity());
