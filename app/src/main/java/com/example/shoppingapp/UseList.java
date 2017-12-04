@@ -66,7 +66,9 @@ public class UseList extends AppCompatActivity {
 
     }
 
-        private List<ProductList> getProducts() {
+        //I'M COMMENTING THIS OUT BECAUSE IT'S WORKING CODE, BUT I NEED TO TEST GETTING EVERYTHING FROM
+        //LISTPRODUCT TABLE INSTEAD OF PRODUCT -- MARTIN.
+        /*private List<ProductList> getProducts() {
 
             float rowPrice = 0;
             float rowQuantity = 0;
@@ -96,7 +98,42 @@ public class UseList extends AppCompatActivity {
             updateTotal.setText("$" + String.format("%.2f", finalTotal));
 
             return theList;
+        }*/
+
+    //This should display only the products related to the current list
+    private List<ProductList> getProducts() {
+
+        float rowPrice = 0;
+        float rowQuantity = 0;
+        float finalTotal = 0;
+        float tempPrice = 0;
+        String tempAisle;
+        myDB = new AppDatabaseHelper(this);
+
+        List<ProductList> theList = new ArrayList<ProductList>();
+        List<Product> receivedList = new ArrayList<Product>();
+        receivedList = myDB.displayListProducts(FORWARD);
+        Product tempProduct;
+        ProductList productList;
+        if(theList.size() == 0){
+            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+        } else{
+            for (int i = 0; i < receivedList.size(); i++){
+                tempProduct = receivedList.get(i);
+                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), tempProduct.getPrice(), tempProduct.getAisle());
+                theList.add(productList);
+                rowPrice = Float.valueOf(tempProduct.getPrice());
+                rowQuantity = Float.valueOf(tempProduct.getQuantity());
+
+                finalTotal += (rowPrice * rowQuantity);
+            }
         }
+
+        TextView updateTotal = (TextView) findViewById(R.id.textView7);
+        updateTotal.setText("$" + String.format("%.2f", finalTotal));
+
+        return theList;
+    }
 
     public void onAdd(View view){
         Intent intent = new Intent(UseList.this, PickExisting.class);
@@ -112,3 +149,4 @@ public class UseList extends AppCompatActivity {
 
     }
 }
+
