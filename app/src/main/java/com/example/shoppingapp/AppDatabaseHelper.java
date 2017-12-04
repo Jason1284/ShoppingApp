@@ -12,49 +12,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
-/**
- * Created by SG0216351 on 11/1/2017.
- */
-
-public class AppDatabaseHelper extends SQLiteOpenHelper {
-
-    public static final String TAG = "APPDatabaseHelper";
-
-    //Database name and version
-    public static final int DATABASE_VERSION =    1;
-    public static final String DATABASE_NAME = "PRODUCTS.db";
-
-    /**********************************************************
-     *              TABLE NAMES
-     **********************************************************/
-    public static final String PRODUCT_TABLE = "product_table";
-    public static final String LISTPRODUCT_TABLE = "listproduct_table";
-    public static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
-    public static final String LIST_TABLE = "list_table";
-    public static final String INVENTORY_TABLE = "inventory_table";
-    /**********************************************************
-     *              PRODUCT TABLE COLUMNS NAMES
-     **********************************************************/
-    public static final String PRODUCT_ID = "product_id";
-    public static final String PRODUCT_NAME = "product_name";
-    public static final String PRODUCT_PRICE = "price";
-    public static final String PRODUCT_AISLE = "aisle";
-    public static final String PRODUCT_VALUE = "value";
-    /*************************************package com.example.shoppingapp;
-
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.ContactsContract;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
