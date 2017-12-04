@@ -98,8 +98,6 @@ public class UseList extends AppCompatActivity {
             return theList;
         }
 
-
-
     public void onAdd(View view){
         Intent intent = new Intent(UseList.this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);

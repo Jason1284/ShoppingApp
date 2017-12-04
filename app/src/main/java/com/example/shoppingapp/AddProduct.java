@@ -35,34 +35,6 @@ public class AddProduct extends AppCompatActivity {
 
     }
 
-    /*addBtn.setOnClickListener((new View.OnClickListener(){
-
-        @Override
-        public void onClick(View v) {
-            EditText nameText = (EditText) findViewById(R.id.editText);
-            String name = nameText.getText().toString();
-
-            product.setName(name);
-
-            EditText priceText = (EditText) findViewById(R.id.editText3);
-            String price = priceText.getText().toString();
-
-            product.setPrice(Integer.parseInt(price));
-
-            EditText quantityText = (EditText) findViewById(R.id.editText4);
-            String quantity = quantityText.getText().toString();
-
-            product.setQuantity(Integer.parseInt(quantity));
-
-            EditText aisleText = (EditText) findViewById(R.id.editText8);
-            String aisle = aisleText.getText().toString();
-
-            product.setAisle(aisle);
-
-            newDb.addProduct(product);
-            newDb.addListProduct(FORWARD, product);
-        }
-    }));*/
 
     public void onAddNew(View view){
         //Getting text
@@ -93,7 +65,7 @@ public class AddProduct extends AppCompatActivity {
         //Adding to database
         newDb.addProduct(product);
         Toast.makeText(AddProduct.this, "Item Added!", Toast.LENGTH_LONG).show();
-        //newDb.addListProduct(FORWARD, product);
+        newDb.addListProduct(FORWARD, product);
     }
 
     public void onBack(View v) {
