@@ -53,7 +53,17 @@ public class UseList extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
         editor.putString("name", message);
         editor.apply();
-
+        
+        setListView();
+       
+    }
+    
+    protected void onResume(){
+        super.onResume();
+        setListView();
+    }
+    
+    public void setListView(){
         // Setup the list view
         final ListView productListView = (ListView) findViewById(R.id.listView2);
         final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
@@ -63,7 +73,6 @@ public class UseList extends AppCompatActivity {
         for(final ProductList entry : getProducts()) {
             productListAdapter.add(entry);
         }
-
     }
 
         //I'M COMMENTING THIS OUT BECAUSE IT'S WORKING CODE, BUT I NEED TO TEST GETTING EVERYTHING FROM
