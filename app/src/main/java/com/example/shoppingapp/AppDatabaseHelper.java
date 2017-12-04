@@ -41,6 +41,50 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     public static final String PRODUCT_PRICE = "price";
     public static final String PRODUCT_AISLE = "aisle";
     public static final String PRODUCT_VALUE = "value";
+    /*************************************package com.example.shoppingapp;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.ContactsContract;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by SG0216351 on 11/1/2017.
+ */
+
+public class AppDatabaseHelper extends SQLiteOpenHelper {
+
+    public static final String TAG = "APPDatabaseHelper";
+
+    //Database name and version
+    public static final int DATABASE_VERSION =    1;
+    public static final String DATABASE_NAME = "PRODUCTS.db";
+
+    /**********************************************************
+     *              TABLE NAMES
+     **********************************************************/
+    public static final String PRODUCT_TABLE = "product_table";
+    public static final String LISTPRODUCT_TABLE = "listproduct_table";
+    public static final String INVENTORYPRODUCT_TABLE = "inventoryproduct_table";
+    public static final String LIST_TABLE = "list_table";
+    public static final String INVENTORY_TABLE = "inventory_table";
+    /**********************************************************
+     *              PRODUCT TABLE COLUMNS NAMES
+     **********************************************************/
+    public static final String PRODUCT_ID = "product_id";
+    public static final String PRODUCT_NAME = "product_name";
+    public static final String PRODUCT_PRICE = "price";
+    public static final String PRODUCT_AISLE = "aisle";
+    public static final String PRODUCT_VALUE = "value";
     /**********************************************************
      *              LIST TABLE COLUMNS NAMES
      **********************************************************/
@@ -58,7 +102,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     //Create statement for product_table
     public static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
-            + PRODUCT_PRICE + " TEXT," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + " INTEGER DEFAULT 0," + ")";
+            + PRODUCT_PRICE + " TEXT," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + " INTEGER DEFAULT 0" + ")";
     //Create statement for list_table
     public static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE
             + "(" + LIST_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + LIST_NAME + " TEXT UNIQUE" + ")";
@@ -68,7 +112,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
     //Create statement for listproduct_table
     public static final String CREATE_LISTPRODUCT_TABLE = "CREATE TABLE " + LISTPRODUCT_TABLE
             + "(" + PRODUCT_ID + " INTEGER," + LIST_ID + " INTEGER," + QUANTITY + " INTEGER,"
-            + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)," + " FOREIGN KEY(LIST_ID) REFERENCES LIST_TABLE(LIST_ID)" + AISLE + " TEXT" + ")";
+            + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)," + " FOREIGN KEY(LIST_ID) REFERENCES LIST_TABLE(LIST_ID)" + ")";
     //Create statement for inventoryproduct_table
     public static final String CREATE_INVENTORYPRODUCT_TABLE = "CREATE TABLE " + INVENTORYPRODUCT_TABLE
             + "(" + INVENTORY_ID + " INTEGER," + PRODUCT_ID + " INTEGER," + QUANTITY + " INTEGER,"
@@ -195,12 +239,52 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public Cursor displayListProducts(String list){
+    public List<Product> displayListProducts(String list){
         SQLiteDatabase db = this.getWritableDatabase();
+        List<Product> products = new ArrayList<Product>();
+
+        Product product = new Product();
+        int listId = 0;
+        Integer prodId;
+
+        //FIND LIST ID ACCORDING TO LIST NAME RECEIVED BY PARAMETER
         String listToBeUsed = "SELECT " + LIST_ID + " FROM " + LIST_TABLE + " WHERE " + LIST_NAME + " = '" + list + "'";
-        String wholeListProd = "SELECT * FROM " + LISTPRODUCT_TABLE;
+        Cursor findId = db.rawQuery(listToBeUsed, null);
+        while (findId.moveToNext()) {
+            listId = findId.getInt(0);
+        }
+
+        //FIND ALL PRODUCT IDS AND QUANTITY FOR THE CORRESPONDING LIST ID IN LISTPRODUCT TABLE
+        String wholeListProd = "SELECT * FROM " + LISTPRODUCT_TABLE + " WHERE " + LIST_ID + " = '" + listId + "'";
         Cursor all = db.rawQuery(wholeListProd, null);
-        return all;
+        Integer prodSearch[] = new Integer[all.getCount()];
+        String quantity[] = new String[all.getCount()];
+        int i = 0;
+
+        while (all.moveToNext()) {
+            prodSearch[i] = all.getInt(0);
+            quantity[i] = all.getString(2);
+            i++;
+        }
+
+
+        //USE PRODUCT IDS FOUND TO ADD PRODUCT INFORMATION TO PRODUCT INSTANCES AND ADD THEM TO ARRAYLIST TO BE RETURNED.
+        int k = 0;
+        for(int j = 0; j < all.getCount(); j++) {
+            String finalProdList = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_ID + " = '" + prodSearch[i] + "'";
+            Cursor prods = db.rawQuery(finalProdList, null);
+            while (prods.moveToNext()) {
+                product.setName(prods.getString(1));
+                product.setPrice(prods.getString(2));
+                product.setAisle(prods.getString(3));
+                product.setQuantity(quantity[k]);
+                k++;
+
+                products.add(product);
+            }
+        }
+
+        return products;
     }
 
 }
