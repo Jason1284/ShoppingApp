@@ -109,6 +109,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "Product has been added");
         
     }
+    //Just to push
 
     public void addList(String listName){
         ContentValues values = new ContentValues();
