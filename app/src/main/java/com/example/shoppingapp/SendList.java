@@ -122,6 +122,9 @@ public class SendList extends AppCompatActivity{
 
                 // message needs to receive the string array from the list selected
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+
+                //String listItems[] =
+
                 Toast.makeText(SendList.this, message, Toast.LENGTH_SHORT).show();
 
                 shareIntent = new Intent(android.content.Intent.ACTION_SEND);
