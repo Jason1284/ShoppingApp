@@ -58,7 +58,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
     //Create statement for product_table
     public static final String CREATE_PRODUCT_TABLE = "CREATE TABLE " + PRODUCT_TABLE
-            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT,"
+            + "(" + PRODUCT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + PRODUCT_NAME + " TEXT NOT NULL UNIQUE,"
             + PRODUCT_PRICE + " TEXT," + PRODUCT_AISLE + " TEXT," + PRODUCT_VALUE + " INTEGER DEFAULT 0" + ")";
     //Create statement for list_table
     public static final String CREATE_LIST_TABLE = "CREATE TABLE " + LIST_TABLE

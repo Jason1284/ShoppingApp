@@ -61,7 +61,7 @@ public class PickExisting extends AppCompatActivity {
         registerClick();
     }
 
-    /*public void displayAll() {
+    public void displayAll() {
 
         ListView listView = (ListView) findViewById(R.id.listViewPick);
         myDB = new AppDatabaseHelper(this);
@@ -83,7 +83,7 @@ public class PickExisting extends AppCompatActivity {
             final ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
             listView.setAdapter(listAdapter);
         }
-    }*/
+    }
     private List<ProductListReduced> getProducts() {
 
         myDB = new AppDatabaseHelper(this);
