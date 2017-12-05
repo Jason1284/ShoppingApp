@@ -101,6 +101,8 @@ public class ChooseList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 this.parent = parent;
                 TextView textView = (TextView) viewClicked;
+
+
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(ChooseList.this, message, Toast.LENGTH_SHORT).show();
             }
