@@ -42,22 +42,22 @@ public class PickExisting extends AppCompatActivity {
         FORWARD = message;
 
         // Setup the list view
-        final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
-        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
-        productListViewReduced.setAdapter(productListAdapterReduced);
+        //final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
+        //final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
+        //productListViewReduced.setAdapter(productListAdapterReduced);
 
         // Populate the list, through the adapter
-        for(final ProductListReduced entry : getProducts()) {
-            productListAdapterReduced.add(entry);
-        }
+        //for(final ProductListReduced entry : getProducts()) {
+            //productListAdapterReduced.add(entry);
+        //}
 
-        //displayAll();
+        displayAll();
         registerClick();
     }
 
     protected void onResume(){
         super.onResume();
-        //displayAll();
+        displayAll();
         registerClick();
     }
 
