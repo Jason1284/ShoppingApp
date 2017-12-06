@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
  */
 public class ChooseList extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     ListView listView;
     AppDatabaseHelper myDB;
 
@@ -105,6 +107,17 @@ public class ChooseList extends AppCompatActivity {
 
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(ChooseList.this, message, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(ChooseList.this, UseList.class);
+
+                //EditText editText = (EditText) findViewById(R.id.editText104);
+                String itemChosen = textView.getText().toString();
+
+                myDB = new AppDatabaseHelper(ChooseList.this);
+                myDB.addList(itemChosen);
+
+                intent.putExtra(EXTRA_MESSAGE, itemChosen);
+                startActivity(intent);
             }
         });
     }

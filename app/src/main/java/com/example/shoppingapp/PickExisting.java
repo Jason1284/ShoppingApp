@@ -129,6 +129,7 @@ public class PickExisting extends AppCompatActivity {
                 TextView textView = (TextView) viewClicked;
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(PickExisting.this, message, Toast.LENGTH_SHORT).show();
+                //add database commands here to add this item selected to the List in use
             }
         });
     }
