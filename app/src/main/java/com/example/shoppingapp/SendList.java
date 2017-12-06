@@ -27,9 +27,8 @@ import java.util.ArrayList;
  */
 public class SendList extends AppCompatActivity{
 
-    //Button btnShare;
+    public static String FORWARD;
     Intent shareIntent;
-    String shareBody = "This was sent with ACTION_SEND";
     AppDatabaseHelper myDB;
     ListView listView;
 
@@ -123,15 +122,14 @@ public class SendList extends AppCompatActivity{
                 // message needs to receive the string array from the list selected
                 //String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 String listChosen = textView.getText().toString();
-
+                FORWARD = listChosen;
                 myDB = new AppDatabaseHelper(SendList.this);
 
                 ArrayList<Product> allItems = new ArrayList<Product>();
 
-                allItems = (ArrayList<Product>) myDB.displayListProducts(listChosen);
+                allItems = (ArrayList<Product>) myDB.displayListProducts(FORWARD);
 
-
-                Toast.makeText(SendList.this, listChosen, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SendList.this, "Sending " + listChosen, Toast.LENGTH_SHORT).show();
 
                 shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");

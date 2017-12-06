@@ -24,7 +24,7 @@ import java.util.List;
 public class PickExisting extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD;
-
+    Product product = new Product();
     AppDatabaseHelper myDB;
     ListView listView;
 
@@ -129,7 +129,21 @@ public class PickExisting extends AppCompatActivity {
                 TextView textView = (TextView) viewClicked;
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(PickExisting.this, message, Toast.LENGTH_SHORT).show();
+
                 //add database commands here to add this item selected to the List in use
+
+                //Cursor data = myDB.feedNewList();
+
+                //Intent intent = new Intent(PickExisting.this, UseList.class);
+                //String listChosen = textView.getText().toString();
+                //String itemChosen = data.getString(1);
+                //product.setName(data.getString(1));
+                //myDB = new AppDatabaseHelper(PickExisting.this);
+                //myDB.addListProduct(listChosen, product);
+
+                //intent.putExtra(EXTRA_MESSAGE, listChosen);
+                //startActivity(intent);
+
             }
         });
     }

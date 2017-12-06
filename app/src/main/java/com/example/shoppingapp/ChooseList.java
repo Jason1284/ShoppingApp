@@ -111,7 +111,6 @@ public class ChooseList extends AppCompatActivity {
                 String listChosen = textView.getText().toString();
 
                 myDB = new AppDatabaseHelper(ChooseList.this);
-                myDB.addList(listChosen);
 
                 intent.putExtra(EXTRA_MESSAGE, listChosen);
                 startActivity(intent);

@@ -112,7 +112,6 @@ public class choose_inventory extends AppCompatActivity {
                 String listChosen = textView.getText().toString();
 
                 myDB = new AppDatabaseHelper(choose_inventory.this);
-                myDB.addInventory(listChosen);
 
                 intent.putExtra(EXTRA_MESSAGE, listChosen);
                 startActivity(intent);
