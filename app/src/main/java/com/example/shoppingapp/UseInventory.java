@@ -52,19 +52,19 @@ public class UseInventory extends AppCompatActivity {
         editor.apply();
 
         // Setup the list view
-        /*final ListView productListViewReduced = (ListView) findViewById(R.id.listView3);
+        final ListView productListViewReduced = (ListView) findViewById(R.id.listView3);
         final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
         productListViewReduced.setAdapter(productListAdapterReduced);
 
         // Populate the list, through the adapter
         for(final ProductListReduced entry : getProducts()) {
             productListAdapterReduced.add(entry);
-        }*/
+        }
     }
 
-    /*public void onResume(){
+    public void onResume(){
         super.onResume();
-        displayAll();
+        //displayAll();
     }
 
     public void displayAll() {

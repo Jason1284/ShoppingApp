@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +45,8 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
 
         viewHolder.aisleTextView.setText(entry.getAisle());
 
+        viewHolder.checkBox1.setChecked(entry.getValue());
+
 
         return view;
     }
@@ -80,6 +83,7 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
             viewHolder.productTextView = (TextView) workingView.findViewById(R.id.textViewProduct);
             viewHolder.quantityTextView = (TextView) workingView.findViewById(R.id.textViewQuantity);
             viewHolder.aisleTextView = (TextView) workingView.findViewById(R.id.textViewAisle);
+            viewHolder.checkBox1 = (CheckBox) workingView.findViewById(R.id.checkBox1);
 
             workingView.setTag(viewHolder);
 
@@ -95,5 +99,6 @@ public final class ProductListAdapter extends ArrayAdapter<ProductList> {
         public TextView productTextView;
         public TextView quantityTextView;
         public TextView aisleTextView;
+        public CheckBox checkBox1;
     }
 }

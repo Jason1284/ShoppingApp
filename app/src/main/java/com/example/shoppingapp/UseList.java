@@ -83,6 +83,7 @@ public class UseList extends AppCompatActivity {
             float rowQuantity = 0;
             float finalTotal = 0;
             float tempPrice = 0;
+            Boolean checked = false;
 
 
             myDB = new AppDatabaseHelper(this);
@@ -93,8 +94,11 @@ public class UseList extends AppCompatActivity {
                 Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
             } else {
                 while (data.moveToNext()) {
+                    if (data.getString(6) == "1") {
+                        checked = true;
+                    }
                     tempPrice = Float.valueOf(data.getString(2));
-                    product = new ProductList(data.getString(5), data.getString(1), "$" + String.format("%.2f", tempPrice), data.getString(3));
+                    product = new ProductList(data.getString(5), data.getString(1), "$" + String.format("%.2f", tempPrice), data.getString(3), checked);
                     theList.add(product);
                     rowPrice = Float.valueOf(data.getString(2));
                     rowQuantity = Float.valueOf(data.getString(5));
@@ -117,6 +121,7 @@ public class UseList extends AppCompatActivity {
         float finalTotal = 0;
         float tempPrice = 0;
         String tempAisle;
+        Boolean checked = false;
         myDB = new AppDatabaseHelper(this);
 
         List<ProductList> theList = new ArrayList<ProductList>();
@@ -128,9 +133,13 @@ public class UseList extends AppCompatActivity {
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else{
             for (int i = 0; i < receivedList.size(); i++){
+
                 tempProduct = receivedList.get(i);
                 tempPrice = Float.valueOf(tempProduct.getPrice());
-                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle());
+                if (tempProduct.getValue() == 1) {
+                    checked = true;
+                }
+                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle(), checked);
                 theList.add(productList);
                 rowPrice = Float.valueOf(tempProduct.getPrice());
                 rowQuantity = Float.valueOf(tempProduct.getQuantity());
