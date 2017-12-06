@@ -121,16 +121,20 @@ public class SendList extends AppCompatActivity{
                 TextView textView = (TextView) viewClicked;
 
                 // message needs to receive the string array from the list selected
-                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                //String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
 
                 //String listItems[] =
+                String listChosen = textView.getText().toString();
 
-                Toast.makeText(SendList.this, message, Toast.LENGTH_SHORT).show();
+                myDB = new AppDatabaseHelper(SendList.this);
+                myDB.addList(listChosen);
+
+                Toast.makeText(SendList.this, listChosen, Toast.LENGTH_SHORT).show();
 
                 shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Shopping List");
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, listChosen);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
             }
         });

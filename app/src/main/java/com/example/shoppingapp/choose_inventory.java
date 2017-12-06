@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class choose_inventory extends AppCompatActivity {
 
+    public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     AppDatabaseHelper myDB;
     ListView listView;
 
@@ -100,8 +101,21 @@ public class choose_inventory extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View viewClicked, int position, long id) {
                 this.parent = parent;
                 TextView textView = (TextView) viewClicked;
-                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
-                Toast.makeText(choose_inventory.this, message, Toast.LENGTH_SHORT).show();
+
+                //these 2 lines show the toast
+                //String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                //Toast.makeText(choose_inventory.this, message, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(choose_inventory.this, UseInventory.class);
+
+                //EditText editText = (EditText) findViewById(R.id.editText104);
+                String listChosen = textView.getText().toString();
+
+                myDB = new AppDatabaseHelper(choose_inventory.this);
+                myDB.addInventory(listChosen);
+
+                intent.putExtra(EXTRA_MESSAGE, listChosen);
+                startActivity(intent);
             }
         });
     }

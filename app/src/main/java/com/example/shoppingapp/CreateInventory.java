@@ -36,6 +36,9 @@ public class CreateInventory extends AppCompatActivity {
         Intent intent = new Intent(this, UseInventory.class);
         EditText editText = (EditText) findViewById(R.id.editText4);
         String message = editText.getText().toString();
+        AppDatabaseHelper newList = new AppDatabaseHelper(this);
+        newList.addInventory(message);
+
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

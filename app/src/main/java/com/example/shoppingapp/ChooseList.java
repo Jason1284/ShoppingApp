@@ -104,19 +104,16 @@ public class ChooseList extends AppCompatActivity {
                 this.parent = parent;
                 TextView textView = (TextView) viewClicked;
 
-
-                String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
-                Toast.makeText(ChooseList.this, message, Toast.LENGTH_SHORT).show();
+                //String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
+                //Toast.makeText(ChooseList.this, message, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(ChooseList.this, UseList.class);
-
-                //EditText editText = (EditText) findViewById(R.id.editText104);
-                String itemChosen = textView.getText().toString();
+                String listChosen = textView.getText().toString();
 
                 myDB = new AppDatabaseHelper(ChooseList.this);
-                myDB.addList(itemChosen);
+                myDB.addList(listChosen);
 
-                intent.putExtra(EXTRA_MESSAGE, itemChosen);
+                intent.putExtra(EXTRA_MESSAGE, listChosen);
                 startActivity(intent);
             }
         });
