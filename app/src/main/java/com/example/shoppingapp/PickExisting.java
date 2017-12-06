@@ -131,6 +131,7 @@ public class PickExisting extends AppCompatActivity {
                 Toast.makeText(PickExisting.this, message, Toast.LENGTH_SHORT).show();
 
                 //add database commands here to add this item selected to the List in use
+                //Also needs the option to add to inventory if we came from UseInventory
 
                 //Cursor data = myDB.feedNewList();
 
