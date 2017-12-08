@@ -16,7 +16,7 @@ public class Product {
      *CONSTRUCTORS
      */
     public Product(){}
-    public Product(String name, String price, String aisle, String quantity){
+    public Product(String name, String price, String aisle, String quantity) {
         this.name = name;
         this.price = price;
         this.aisle = aisle;

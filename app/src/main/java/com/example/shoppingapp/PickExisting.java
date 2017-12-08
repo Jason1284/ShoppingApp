@@ -155,25 +155,6 @@ public class PickExisting extends AppCompatActivity {
                 product = myDB.findProdByName(name);
 
                 myDB.addListProduct(FORWARD, product);
-
-                //add database commands here to add this item selected to the List in use
-                //Also needs the option to add to inventory if we came from UseInventory
-
-                //Cursor data = myDB.feedNewList();
-
-                //Intent intent = new Intent(PickExisting.this, UseList.class);
-                //String listChosen = textView.getText().toString();
-                //String itemChosen = data.getString(1);
-                //product.setName(data.getString(1));
-                //myDB = new AppDatabaseHelper(PickExisting.this);
-                //myDB.addListProduct(listChosen, product);
-
-                //intent.putExtra(EXTRA_MESSAGE, listChosen);
-                //startActivity(intent);
-
-
-
-
             }
         });
     }

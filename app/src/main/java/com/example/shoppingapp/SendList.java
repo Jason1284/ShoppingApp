@@ -76,8 +76,13 @@ public class SendList extends AppCompatActivity{
             }
         });*/
         displayAll();
-        registerClick();
+        //registerClick();
 
+    }
+
+    public void onResume(){
+        super.onResume();
+        registerClick();
     }
 
     /**
@@ -128,13 +133,17 @@ public class SendList extends AppCompatActivity{
                 ArrayList<Product> allItems = new ArrayList<Product>();
 
                 allItems = (ArrayList<Product>) myDB.displayListProducts(FORWARD);
+                String fullList = "";
+                for (int i = 0; i < allItems.size(); i++){
+                    fullList = fullList + allItems.get(i).getName() +System.getProperty("line.separator");
+                }
 
                 Toast.makeText(SendList.this, "Sending " + listChosen, Toast.LENGTH_SHORT).show();
 
                 shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Shopping List "  + listChosen);
-                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, allItems);
+                shareIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Shopping List " + listChosen);
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, fullList);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
             }
         });
