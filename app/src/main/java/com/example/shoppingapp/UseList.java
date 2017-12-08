@@ -54,13 +54,15 @@ public class UseList extends AppCompatActivity {
         editor.putString("name", message);
         editor.apply();
 
-        setListView();
+        //setListView();
+        displayAll();
 
     }
 
     protected void onResume(){
         super.onResume();
-        setListView();
+        //setListView();
+        displayAll();
     }
 
     public void setListView(){
@@ -152,6 +154,25 @@ public class UseList extends AppCompatActivity {
         updateTotal.setText("$" + String.format("%.2f", finalTotal));
 
         return theList;
+    }
+
+    public void displayAll() {
+
+        ListView listView = (ListView) findViewById(R.id.listView2);
+        myDB = new AppDatabaseHelper(this);
+        List<Product> theList = new ArrayList<Product>();
+        List<String> toDisplay = new ArrayList<String>();
+        theList = myDB.displayListProducts(FORWARD);
+        Product product = new Product();
+        String itemRow[] = new String[theList.size()];
+        for (int i = 0; i < theList.size(); i++){
+            itemRow[i] = theList.get(i).getName() + "                                                          $" + product.getPrice();
+            toDisplay.add(itemRow[i]);
+        }
+
+        final ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, toDisplay);
+        listView.setAdapter(listAdapter);
+
     }
 
     public void onAdd(View view){

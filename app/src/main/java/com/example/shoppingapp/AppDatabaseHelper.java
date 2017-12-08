@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -228,8 +229,8 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
         //USE PRODUCT IDS FOUND TO ADD PRODUCT INFORMATION TO PRODUCT INSTANCES AND ADD THEM TO ARRAYLIST TO BE RETURNED.
         int k = 0;
-        for(int j = 0; j < all.getCount(); j++) {
-            String finalProdList = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_ID + " = '" + prodSearch[i] + "'";
+        for(int j = 0; j < prodSearch.length; j++) {
+            String finalProdList = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_ID + " = '" + prodSearch[j] + "'";
             Cursor prods = db.rawQuery(finalProdList, null);
             while (prods.moveToNext()) {
                 product.setName(prods.getString(1));
@@ -240,9 +241,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
                 products.add(product);
             }
+
         }
-
         return products;
-    }
-
-}
+}}
