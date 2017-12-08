@@ -163,7 +163,6 @@ public class UseList extends AppCompatActivity {
         List<Product> theList = new ArrayList<Product>();
         List<String> toDisplay = new ArrayList<String>();
         theList = myDB.displayListProducts(FORWARD);
-        Product product = new Product();
         String itemRow[] = new String[theList.size()];
         for (int i = 0; i < theList.size(); i++){
             itemRow[i] = theList.get(i).getName() + "                                                          $" + theList.get(i).getPrice();

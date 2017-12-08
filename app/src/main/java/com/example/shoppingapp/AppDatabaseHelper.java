@@ -202,7 +202,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         List<Product> products = new ArrayList<Product>();
 
-        Product product = new Product();
+        Product product;
         int listId = 0;
         Integer prodId;
 
@@ -233,6 +233,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
             String finalProdList = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_ID + " = '" + prodSearch[j] + "'";
             Cursor prods = db.rawQuery(finalProdList, null);
             while (prods.moveToNext()) {
+                product = new Product();
                 product.setName(prods.getString(1));
                 product.setPrice(prods.getString(2));
                 product.setAisle(prods.getString(3));
