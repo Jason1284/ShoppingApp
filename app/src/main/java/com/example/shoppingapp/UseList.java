@@ -166,7 +166,7 @@ public class UseList extends AppCompatActivity {
         Product product = new Product();
         String itemRow[] = new String[theList.size()];
         for (int i = 0; i < theList.size(); i++){
-            itemRow[i] = theList.get(i).getName() + "                                                          $" + product.getPrice();
+            itemRow[i] = theList.get(i).getName() + "                                                          $" + theList.get(i).getPrice();
             toDisplay.add(itemRow[i]);
         }
 

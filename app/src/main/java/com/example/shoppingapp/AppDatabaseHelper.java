@@ -244,4 +244,18 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
 
         }
         return products;
-}}
+    }
+
+    public Product findProdByName(String name){
+        Product product = new Product();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_NAME + " = '" + name + "'", null);
+        while (data.moveToNext()) {
+            product.setName(data.getString(1));
+            product.setPrice(data.getString(2));
+            product.setAisle(data.getString(3));
+        }
+
+        return product;
+    }
+}

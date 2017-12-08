@@ -2,6 +2,7 @@ package com.example.shoppingapp;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -51,15 +52,29 @@ public class PickExisting extends AppCompatActivity {
             //productListAdapterReduced.add(entry);
         //}
 
-        displayAll();
+        //displayAll();
+        //setListView();
         registerClick();
     }
 
     protected void onResume(){
         super.onResume();
         displayAll();
+        //setListView();
         registerClick();
     }
+
+    /*public void setListView(){
+        // Setup the list view
+        final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
+        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
+        productListViewReduced.setAdapter(productListAdapterReduced);
+
+        // Populate the list, through the adapter
+        for(final ProductListReduced entry : getProducts()) {
+        productListAdapterReduced.add(entry);
+        }
+    }*/
 
     public void displayAll() {
 
@@ -75,8 +90,7 @@ public class PickExisting extends AppCompatActivity {
         } else {
             while (data.moveToNext()) {
                 product.setName(data.getString(1));
-                product.setPrice(data.getString(2));
-                itemRow[i] = product.getName() + "                                                          $" + product.getPrice();
+                itemRow[i] = product.getName();
                 theList.add(itemRow[i]);
                 i++;
             }
@@ -84,7 +98,7 @@ public class PickExisting extends AppCompatActivity {
             listView.setAdapter(listAdapter);
         }
     }
-    private List<ProductListReduced> getProducts() {
+    /*private List<ProductListReduced> getProducts() {
 
         myDB = new AppDatabaseHelper(this);
         float tempPrice = 0;
@@ -101,13 +115,19 @@ public class PickExisting extends AppCompatActivity {
             }
         }
         return theList;
-    }
+    }*/
     /**
      * onAddNew
      * @param view
      */
     public void onAddNew(View view){
         Intent intent = new Intent(this, AddProduct.class);
+        intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        startActivity(intent);
+    }
+
+    public void onUseList(View view){
+        Intent intent = new Intent(this, UseList.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
@@ -130,6 +150,12 @@ public class PickExisting extends AppCompatActivity {
                 String message = "You clicked # " + position + ", which is list: " + textView.getText().toString();
                 Toast.makeText(PickExisting.this, message, Toast.LENGTH_SHORT).show();
 
+                String name = textView.getText().toString();
+                Product product = new Product();
+                product = myDB.findProdByName(name);
+
+                myDB.addListProduct(FORWARD, product);
+
                 //add database commands here to add this item selected to the List in use
                 //Also needs the option to add to inventory if we came from UseInventory
 
@@ -144,6 +170,7 @@ public class PickExisting extends AppCompatActivity {
 
                 //intent.putExtra(EXTRA_MESSAGE, listChosen);
                 //startActivity(intent);
+
 
 
 
