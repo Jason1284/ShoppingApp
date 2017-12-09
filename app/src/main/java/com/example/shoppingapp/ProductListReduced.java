@@ -8,12 +8,12 @@ package com.example.shoppingapp;
 public final class ProductListReduced {
 
     private final String name;
-    private final String price;
+    private final String quantity;
     private final String aisle;
 
-    public ProductListReduced(final String product, final String price, final String aisle) {
+    public ProductListReduced(final String product, final String quantity, final String aisle) {
         this.name = product;
-        this.price = price;
+        this.quantity = quantity;
         this.aisle = aisle;
     }
 
@@ -21,8 +21,8 @@ public final class ProductListReduced {
         return name;
     }
 
-    public String getPrice() {
-        return price;
+    public String getQuantity() {
+        return quantity;
     }
 
     public String getAisle() { return aisle; }

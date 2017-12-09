@@ -59,18 +59,18 @@ public class UseInventory extends AppCompatActivity {
 
     public void setListView(){
         // Setup the list view
-        final ListView productListView = (ListView) findViewById(R.id.listView2);
-        final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
-        productListView.setAdapter(productListAdapter);
+        final ListView productListView = (ListView) findViewById(R.id.listView3);
+        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
+        productListView.setAdapter(productListAdapterReduced);
 
         // Populate the list, through the adapter
-        for(final ProductList entry : getProducts()) {
-            productListAdapter.add(entry);
+        for(final ProductListReduced entry : getProducts()) {
+            productListAdapterReduced.add(entry);
         }
     }
     
 
-    public void displayAll() {
+    /*public void displayAll() {
 
         ListView listView = (ListView) findViewById(R.id.listView3);
         myDB = new AppDatabaseHelper(this);
@@ -85,7 +85,7 @@ public class UseInventory extends AppCompatActivity {
             ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theInventory);
             listView.setAdapter(listAdapter);
         }
-    }
+    }*/
     /**
      * onAddProduct allows user to add products or items to each inventory list in use
      * @param view
@@ -97,44 +97,29 @@ public class UseInventory extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private List<ProductList> getProducts() {
+    private List<ProductListReduced> getProducts() {
 
-        float rowPrice = 0;
-        float rowQuantity = 0;
-        float finalTotal = 0;
-        float tempPrice = 0;
-        String tempAisle;
-        Boolean checked = false;
         myDB = new AppDatabaseHelper(this);
 
-        List<ProductList> theInventory = new ArrayList<ProductList>();
+        List<ProductListReduced> theInventory = new ArrayList<ProductListReduced>();
         List<Product> receivedInventory = new ArrayList<Product>();
         receivedInventory = myDB.displayInventoryProducts(FORWARD);
         Product tempProduct;
-        ProductList productList;
-        String tempQuantity = "";
+        ProductListReduced productListReduced;
         if(receivedInventory.size() == 0){
-            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "There are no contents in this inventory!", Toast.LENGTH_LONG).show();
         } else{
             for (int i = 0; i < receivedInventory.size(); i++){
 
                 tempProduct = receivedInventory.get(i);
-                tempQuantity = tempProduct.getQuantity();
-                tempPrice = Float.valueOf(tempProduct.getPrice());
                 //if (tempProduct.getValue() == 1) {
                 //    checked = true;
                 //}
-                productList = new ProductList(/*tempProduct.getQuantity()*/tempQuantity, tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle()/*, checked*/);
-                theInventory.add(productList);
-                rowPrice = Float.valueOf(tempProduct.getPrice());
-                rowQuantity = Float.valueOf(tempQuantity);
 
-                finalTotal += (rowPrice * rowQuantity);
+                productListReduced = new ProductListReduced(tempProduct.getName(), tempProduct.getQuantity(), tempProduct.getAisle());
+                theInventory.add(productListReduced);
             }
         }
-
-        TextView updateTotal = (TextView) findViewById(R.id.textView7);
-        updateTotal.setText("$" + String.format("%.2f", finalTotal));
 
         return theInventory;
     }

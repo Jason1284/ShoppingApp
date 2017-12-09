@@ -36,7 +36,7 @@ public final class ProductListAdapterReduced extends ArrayAdapter<ProductListRed
 
 
         // Setting the title view is straightforward
-        viewHolder.priceTextView.setText(entry.getPrice());
+        viewHolder.priceTextView.setText(entry.getQuantity());
 
         viewHolder.productTextView.setText(entry.getProduct());
 
