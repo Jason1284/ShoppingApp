@@ -157,7 +157,7 @@ public class PickExisting extends AppCompatActivity {
                 Product product = new Product();
                 product = myDB.findProdByName(name);
 
-                if (FROM == "UseList") {
+                if (FROM.equals("UseList")) {
                     myDB.addListProduct(FORWARD, product);
                 }else{
                     myDB.addInventoryProduct(FORWARD, product);

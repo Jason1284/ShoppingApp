@@ -67,7 +67,7 @@ public class AddProduct extends AppCompatActivity {
         //Adding to database
         newDb.addProduct(product);
         Toast.makeText(AddProduct.this, "Item Added!", Toast.LENGTH_LONG).show();
-        if (FROM == "UseList") {
+        if (FROM.equals("UseList"))  {
             newDb.addListProduct(FORWARD, product);
         }else{
             newDb.addInventoryProduct(FORWARD, product);
