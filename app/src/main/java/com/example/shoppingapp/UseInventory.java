@@ -106,17 +106,19 @@ public class UseInventory extends AppCompatActivity {
         receivedInventory = myDB.displayInventoryProducts(FORWARD);
         Product tempProduct;
         ProductListReduced productListReduced;
+        String tempQuantity = "";
         if(receivedInventory.size() == 0){
             Toast.makeText(this, "There are no contents in this inventory!", Toast.LENGTH_LONG).show();
         } else{
             for (int i = 0; i < receivedInventory.size(); i++){
 
                 tempProduct = receivedInventory.get(i);
+                tempQuantity = tempProduct.getQuantity();
                 //if (tempProduct.getValue() == 1) {
                 //    checked = true;
                 //}
 
-                productListReduced = new ProductListReduced(tempProduct.getName(), tempProduct.getQuantity(), tempProduct.getAisle());
+                productListReduced = new ProductListReduced(tempProduct.getName(), tempQuantity, tempProduct.getAisle());
                 theInventory.add(productListReduced);
             }
         }

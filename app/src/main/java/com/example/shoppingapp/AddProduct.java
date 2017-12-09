@@ -76,6 +76,7 @@ public class AddProduct extends AppCompatActivity {
 
     public void onBack(View v) {
         Intent intent = new Intent(this, PickExisting.class);
+        intent.putExtra("caller", FROM);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
         startActivity(intent);
     }
