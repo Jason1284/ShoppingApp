@@ -149,7 +149,7 @@ public class UseList extends AppCompatActivity {
                 rowQuantity = Float.valueOf(tempQuantity);
 
                 finalTotal += (rowPrice * rowQuantity);
-            }
+            } 
         }
 
         TextView updateTotal = (TextView) findViewById(R.id.textView7);

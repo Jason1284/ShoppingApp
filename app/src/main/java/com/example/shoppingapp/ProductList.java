@@ -11,14 +11,14 @@ public final class ProductList {
     private final String name;
     private final String price;
     private final String aisle;
-    private final Boolean value;
+    //private final Boolean value;
 
-    public ProductList(final String quantity, final String product, final String price, final String aisle, final Boolean value) {
+    public ProductList(final String quantity, final String product, final String price, final String aisle/*, final Boolean value*/) {
         this.quantity = quantity;
         this.name = product;
         this.price = price;
         this.aisle = aisle;
-        this.value = value;
+        //this.value = value;
     }
 
     public String getQuantity() {
@@ -35,6 +35,6 @@ public final class ProductList {
 
     public String getAisle() { return aisle; }
 
-    public Boolean getValue() { return value; }
+    //public Boolean getValue() { return value; }
 
 }
