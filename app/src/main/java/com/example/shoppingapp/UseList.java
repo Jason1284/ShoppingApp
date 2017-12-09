@@ -54,15 +54,15 @@ public class UseList extends AppCompatActivity {
         editor.putString("name", message);
         editor.apply();
 
-        //setListView();
-        displayAll();
+        setListView();
+        //displayAll();
 
     }
 
     protected void onResume(){
         super.onResume();
-        //setListView();
-        displayAll();
+        setListView();
+        //displayAll();
     }
 
     public void setListView(){
@@ -131,20 +131,22 @@ public class UseList extends AppCompatActivity {
         receivedList = myDB.displayListProducts(FORWARD);
         Product tempProduct;
         ProductList productList;
-        if(theList.size() == 0){
+        String tempQuantity = "";
+        if(receivedList.size() == 0){
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else{
             for (int i = 0; i < receivedList.size(); i++){
 
                 tempProduct = receivedList.get(i);
+                tempQuantity = "1";
                 tempPrice = Float.valueOf(tempProduct.getPrice());
-                if (tempProduct.getValue() == 1) {
-                    checked = true;
-                }
-                productList = new ProductList(tempProduct.getQuantity(), tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle(), checked);
+                //if (tempProduct.getValue() == 1) {
+                //    checked = true;
+                //}
+                productList = new ProductList(/*tempProduct.getQuantity()*/tempQuantity, tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle()/*, checked*/);
                 theList.add(productList);
                 rowPrice = Float.valueOf(tempProduct.getPrice());
-                rowQuantity = Float.valueOf(tempProduct.getQuantity());
+                rowQuantity = Float.valueOf(tempQuantity);
 
                 finalTotal += (rowPrice * rowQuantity);
             }
