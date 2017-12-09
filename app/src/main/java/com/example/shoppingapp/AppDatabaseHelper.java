@@ -192,11 +192,11 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         }
         while (idProduct.moveToNext()) {
             productId = idProduct.getInt(0);
-            quantity = idInventory.getInt(5);
+            quantity = idProduct.getInt(2);
         }
         ContentValues values = new ContentValues();
-        values.put(INVENTORY_ID, inventoryId);
-        values.put(PRODUCT_ID, productId);
+        values.put(PRODUCT_ID, inventoryId);
+        values.put(INVENTORY_ID, productId);
         values.put(QUANTITY, quantity);
 
         db.insert(INVENTORYPRODUCT_TABLE, null, values);
