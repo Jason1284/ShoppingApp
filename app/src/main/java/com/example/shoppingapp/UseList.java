@@ -138,7 +138,7 @@ public class UseList extends AppCompatActivity {
             for (int i = 0; i < receivedList.size(); i++){
 
                 tempProduct = receivedList.get(i);
-                tempQuantity = "1";
+                tempQuantity = tempProduct.getQuantity();
                 tempPrice = Float.valueOf(tempProduct.getPrice());
                 //if (tempProduct.getValue() == 1) {
                 //    checked = true;

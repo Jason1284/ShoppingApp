@@ -104,7 +104,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         values.put(PRODUCT_NAME, product.getName());
         values.put(PRODUCT_PRICE, product.getPrice());
         values.put(PRODUCT_AISLE, product.getAisle());
-        values.put(PRODUCT_VALUE, product.getValue());
+        values.put(PRODUCT_VALUE, 1);
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(PRODUCT_TABLE, null, values);
         Log.d(TAG, "Product has been added");
@@ -217,12 +217,12 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         String wholeListProd = "SELECT * FROM " + LISTPRODUCT_TABLE + " WHERE " + LIST_ID + " = '" + listId + "'";
         Cursor all = db.rawQuery(wholeListProd, null);
         Integer prodSearch[] = new Integer[all.getCount()];
-        String quantity[] = new String[all.getCount()];
+        Integer quantity[] = new Integer[all.getCount()];
         int i = 0;
 
         while (all.moveToNext()) {
             prodSearch[i] = all.getInt(0);
-            quantity[i] = all.getString(2);
+            quantity[i] = all.getInt(2);
             i++;
         }
 
@@ -237,7 +237,8 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
                 product.setName(prods.getString(1));
                 product.setPrice(prods.getString(2));
                 product.setAisle(prods.getString(3));
-                product.setQuantity(quantity[k]);
+                product.setValue(1);
+                product.setQuantity(String.valueOf(quantity[k]));
                 k++;
 
                 products.add(product);
