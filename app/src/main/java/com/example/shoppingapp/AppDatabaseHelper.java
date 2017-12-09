@@ -73,7 +73,7 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
             + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)," + " FOREIGN KEY(LIST_ID) REFERENCES LIST_TABLE(LIST_ID)" + ")";
     //Create statement for inventoryproduct_table
     public static final String CREATE_INVENTORYPRODUCT_TABLE = "CREATE TABLE " + INVENTORYPRODUCT_TABLE
-            + "(" + INVENTORY_ID + " INTEGER," + PRODUCT_ID + " INTEGER," + QUANTITY + " INTEGER,"
+            + "(" + PRODUCT_ID + " INTEGER," + INVENTORY_ID + " INTEGER," + QUANTITY + " INTEGER,"
             + " FOREIGN KEY(INVENTORY_ID) REFERENCES INVENTORY_TABLE(INVENTORY_ID)," + " FOREIGN KEY(PRODUCT_ID) REFERENCES PRODUCT_TABLE(PRODUCT_ID)" + ")";
 
     /**********************************************************
