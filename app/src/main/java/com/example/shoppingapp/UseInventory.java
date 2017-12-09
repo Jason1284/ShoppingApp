@@ -45,41 +45,44 @@ public class UseInventory extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.textView12);
         textView.setText(message);
 
-        //displayAll();
-
         SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME2", MODE_PRIVATE).edit();
         editor.putString("inventory", message);
         editor.apply();
 
-        // Setup the list view
-        final ListView productListViewReduced = (ListView) findViewById(R.id.listView3);
-        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
-        productListViewReduced.setAdapter(productListAdapterReduced);
-
-        // Populate the list, through the adapter
-        for(final ProductListReduced entry : getProducts()) {
-            productListAdapterReduced.add(entry);
-        }
+        setListView();
     }
 
     public void onResume(){
         super.onResume();
-        //displayAll();
+        setListView();
     }
+
+    public void setListView(){
+        // Setup the list view
+        final ListView productListView = (ListView) findViewById(R.id.listView2);
+        final ProductListAdapter productListAdapter = new ProductListAdapter(this, R.layout.adapter_view_layout);
+        productListView.setAdapter(productListAdapter);
+
+        // Populate the list, through the adapter
+        for(final ProductList entry : getProducts()) {
+            productListAdapter.add(entry);
+        }
+    }
+    
 
     public void displayAll() {
 
         ListView listView = (ListView) findViewById(R.id.listView3);
         myDB = new AppDatabaseHelper(this);
-        ArrayList<String> theList = new ArrayList<>();
+        ArrayList<String> theInventory = new ArrayList<>();
         Cursor data = myDB.feedNewList();
         if (data.getCount() == 0) {
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
         } else {
             while (data.moveToNext()) {
-                theList.add(data.getString(1));
+                theInventory.add(data.getString(1));
             }
-            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theList);
+            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theInventory);
             listView.setAdapter(listAdapter);
         }
     }
@@ -93,22 +96,45 @@ public class UseInventory extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private List<ProductListReduced> getProducts() {
+    private List<ProductList> getProducts() {
 
-        myDB = new AppDatabaseHelper(this);
+        float rowPrice = 0;
+        float rowQuantity = 0;
+        float finalTotal = 0;
         float tempPrice = 0;
-        List<ProductListReduced> theList = new ArrayList<ProductListReduced>();
-        Cursor data = myDB.feedNewList();
-        ProductListReduced product;
-        if (data.getCount() == 0) {
+        String tempAisle;
+        Boolean checked = false;
+        myDB = new AppDatabaseHelper(this);
+
+        List<ProductList> theInventory = new ArrayList<ProductList>();
+        List<Product> receivedInventory = new ArrayList<Product>();
+        receivedInventory = myDB.displayInventoryProducts(FORWARD);
+        Product tempProduct;
+        ProductList productList;
+        String tempQuantity = "";
+        if(receivedInventory.size() == 0){
             Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
-        } else {
-            while (data.moveToNext()) {
-                tempPrice = Float.valueOf(data.getString(2));
-                product = new ProductListReduced(data.getString(1),  "$" + String.format("%.2f", tempPrice), data.getString(3));
-                theList.add(product);
+        } else{
+            for (int i = 0; i < receivedInventory.size(); i++){
+
+                tempProduct = receivedInventory.get(i);
+                tempQuantity = tempProduct.getQuantity();
+                tempPrice = Float.valueOf(tempProduct.getPrice());
+                //if (tempProduct.getValue() == 1) {
+                //    checked = true;
+                //}
+                productList = new ProductList(/*tempProduct.getQuantity()*/tempQuantity, tempProduct.getName(), "$" + String.format("%.2f", tempPrice), tempProduct.getAisle()/*, checked*/);
+                theInventory.add(productList);
+                rowPrice = Float.valueOf(tempProduct.getPrice());
+                rowQuantity = Float.valueOf(tempQuantity);
+
+                finalTotal += (rowPrice * rowQuantity);
             }
         }
-        return theList;
+
+        TextView updateTotal = (TextView) findViewById(R.id.textView7);
+        updateTotal.setText("$" + String.format("%.2f", finalTotal));
+
+        return theInventory;
     }
 }

@@ -248,6 +248,56 @@ public class AppDatabaseHelper extends SQLiteOpenHelper {
         return products;
     }
 
+    public List<Product> displayInventoryProducts(String inventory){
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<Product> products = new ArrayList<Product>();
+
+        Product product;
+        int inventoryId = 0;
+        Integer prodId;
+
+        //FIND LIST ID ACCORDING TO LIST NAME RECEIVED BY PARAMETER
+        String listToBeUsed = "SELECT " + INVENTORY_ID + " FROM " + INVENTORY_TABLE + " WHERE " + INVENTORY_NAME + " = '" + inventory + "'";
+        Cursor findId = db.rawQuery(listToBeUsed, null);
+        while (findId.moveToNext()) {
+            inventoryId = findId.getInt(0);
+        }
+
+        //FIND ALL PRODUCT IDS AND QUANTITY FOR THE CORRESPONDING LIST ID IN LISTPRODUCT TABLE
+        String wholeListProd = "SELECT * FROM " + INVENTORYPRODUCT_TABLE + " WHERE " + INVENTORY_ID + " = '" + inventoryId + "'";
+        Cursor all = db.rawQuery(wholeListProd, null);
+        Integer prodSearch[] = new Integer[all.getCount()];
+        Integer quantity[] = new Integer[all.getCount()];
+        int i = 0;
+
+        while (all.moveToNext()) {
+            prodSearch[i] = all.getInt(0);
+            quantity[i] = all.getInt(2);
+            i++;
+        }
+
+
+        //USE PRODUCT IDS FOUND TO ADD PRODUCT INFORMATION TO PRODUCT INSTANCES AND ADD THEM TO ARRAYLIST TO BE RETURNED.
+        int k = 0;
+        for(int j = 0; j < prodSearch.length; j++) {
+            String finalProdList = "SELECT * FROM " + PRODUCT_TABLE + " WHERE " + PRODUCT_ID + " = '" + prodSearch[j] + "'";
+            Cursor prods = db.rawQuery(finalProdList, null);
+            while (prods.moveToNext()) {
+                product = new Product();
+                product.setName(prods.getString(1));
+                product.setPrice(prods.getString(2));
+                product.setAisle(prods.getString(3));
+                product.setValue(1);
+                product.setQuantity(String.valueOf(quantity[k]));
+                k++;
+
+                products.add(product);
+            }
+
+        }
+        return products;
+    }
+
     public Product findProdByName(String name){
         Product product = new Product();
         SQLiteDatabase db = this.getWritableDatabase();
