@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * UseList will show the items in the list that is in use.
  * Created by Jason on 20171104.
  */
 
