@@ -130,9 +130,15 @@ public class PickExisting extends AppCompatActivity {
     }
 
     public void onUseList(View view){
-        Intent intent = new Intent(this, UseList.class);
-        intent.putExtra(EXTRA_MESSAGE, FORWARD);
-        startActivity(intent);
+        if (FROM.equals("UseList")) {
+            Intent intent = new Intent(this, UseList.class);
+            intent.putExtra(EXTRA_MESSAGE, FORWARD);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, UseInventory.class);
+            intent.putExtra(EXTRA_MESSAGE, FORWARD);
+            startActivity(intent);
+        }
     }
 
     /**
