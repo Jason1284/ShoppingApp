@@ -93,6 +93,7 @@ public class UseInventory extends AppCompatActivity {
     public void onAddProduct(View view){
         Intent intent = new Intent(this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        intent.putExtra("caller", "UseInventory");
         startActivity(intent);
     }
 

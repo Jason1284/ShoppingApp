@@ -180,6 +180,7 @@ public class UseList extends AppCompatActivity {
     public void onAdd(View view){
         Intent intent = new Intent(UseList.this, PickExisting.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        intent.putExtra("caller", "UseList");
         startActivity(intent);
     }
 

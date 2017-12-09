@@ -28,6 +28,7 @@ public class PickExisting extends AppCompatActivity {
     Product product = new Product();
     AppDatabaseHelper myDB;
     ListView listView;
+    public static String FROM;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class PickExisting extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(UseList.EXTRA_MESSAGE);
+        FROM = intent.getStringExtra("caller");
         FORWARD = message;
 
         // Setup the list view
@@ -123,6 +125,7 @@ public class PickExisting extends AppCompatActivity {
     public void onAddNew(View view){
         Intent intent = new Intent(this, AddProduct.class);
         intent.putExtra(EXTRA_MESSAGE, FORWARD);
+        intent.putExtra("caller", FROM);
         startActivity(intent);
     }
 

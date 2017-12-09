@@ -13,6 +13,7 @@ public class AddProduct extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.shoppingapp.MESSAGE";
     public static String FORWARD;
+    public static String FROM;
     Product product = new Product();
     //Button addBtn;
     AppDatabaseHelper newDb;
@@ -28,6 +29,7 @@ public class AddProduct extends AppCompatActivity {
 
         Intent intent = getIntent();
         String message = intent.getStringExtra(PickExisting.EXTRA_MESSAGE);
+        FROM = intent.getStringExtra("caller");
         FORWARD = message;
 
         //addBtn = (Button) findViewById(R.id.button7);
@@ -65,7 +67,11 @@ public class AddProduct extends AppCompatActivity {
         //Adding to database
         newDb.addProduct(product);
         Toast.makeText(AddProduct.this, "Item Added!", Toast.LENGTH_LONG).show();
-        newDb.addListProduct(FORWARD, product);
+        if (FROM == "UseList") {
+            newDb.addListProduct(FORWARD, product);
+        }else{
+            newDb.addInventoryProduct(FORWARD, product);
+        }
     }
 
     public void onBack(View v) {
