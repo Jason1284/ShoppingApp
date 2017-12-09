@@ -76,6 +76,7 @@ public class UseList extends AppCompatActivity {
         for(final ProductList entry : getProducts()) {
             productListAdapter.add(entry);
         }
+
     }
 
     //This should display only the products related to the current list
