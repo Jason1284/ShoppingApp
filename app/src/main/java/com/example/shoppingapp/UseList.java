@@ -78,44 +78,6 @@ public class UseList extends AppCompatActivity {
         }
     }
 
-        //I'M COMMENTING THIS OUT BECAUSE IT'S WORKING CODE, BUT I NEED TO TEST GETTING EVERYTHING FROM
-        //LISTPRODUCT TABLE INSTEAD OF PRODUCT -- MARTIN.
-        /*private List<ProductList> getProducts() {
-
-            float rowPrice = 0;
-            float rowQuantity = 0;
-            float finalTotal = 0;
-            float tempPrice = 0;
-            Boolean checked = false;
-
-
-            myDB = new AppDatabaseHelper(this);
-            List<ProductList> theList = new ArrayList<ProductList>();
-            Cursor data = myDB.feedNewList();
-            ProductList product;
-            if (data.getCount() == 0) {
-                Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
-            } else {
-                while (data.moveToNext()) {
-                    if (data.getString(6) == "1") {
-                        checked = true;
-                    }
-                    tempPrice = Float.valueOf(data.getString(2));
-                    product = new ProductList(data.getString(5), data.getString(1), "$" + String.format("%.2f", tempPrice), data.getString(3), checked);
-                    theList.add(product);
-                    rowPrice = Float.valueOf(data.getString(2));
-                    rowQuantity = Float.valueOf(data.getString(5));
-                    finalTotal += (rowPrice * rowQuantity);
-                }
-            }
-
-
-            TextView updateTotal = (TextView) findViewById(R.id.textView7);
-            updateTotal.setText("$" + String.format("%.2f", finalTotal));
-
-            return theList;
-        }*/
-
     //This should display only the products related to the current list
     private List<ProductList> getProducts() {
 
@@ -192,4 +154,3 @@ public class UseList extends AppCompatActivity {
 
     }
 }
-

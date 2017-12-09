@@ -69,24 +69,7 @@ public class UseInventory extends AppCompatActivity {
         }
     }
     
-
-    /*public void displayAll() {
-
-        ListView listView = (ListView) findViewById(R.id.listView3);
-        myDB = new AppDatabaseHelper(this);
-        ArrayList<String> theInventory = new ArrayList<>();
-        Cursor data = myDB.feedNewList();
-        if (data.getCount() == 0) {
-            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
-        } else {
-            while (data.moveToNext()) {
-                theInventory.add(data.getString(1));
-            }
-            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, theInventory);
-            listView.setAdapter(listAdapter);
-        }
-    }*/
-    /**
+   /**
      * onAddProduct allows user to add products or items to each inventory list in use
      * @param view
      */

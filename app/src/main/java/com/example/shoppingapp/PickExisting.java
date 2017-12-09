@@ -44,18 +44,6 @@ public class PickExisting extends AppCompatActivity {
         FROM = intent.getStringExtra("caller");
         FORWARD = message;
 
-        // Setup the list view
-        //final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
-        //final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
-        //productListViewReduced.setAdapter(productListAdapterReduced);
-
-        // Populate the list, through the adapter
-        //for(final ProductListReduced entry : getProducts()) {
-            //productListAdapterReduced.add(entry);
-        //}
-
-        //displayAll();
-        //setListView();
         registerClick();
     }
 
@@ -65,18 +53,6 @@ public class PickExisting extends AppCompatActivity {
         //setListView();
         registerClick();
     }
-
-    /*public void setListView(){
-        // Setup the list view
-        final ListView productListViewReduced = (ListView) findViewById(R.id.listViewPick);
-        final ProductListAdapterReduced productListAdapterReduced = new ProductListAdapterReduced(this, R.layout.adapter_view_layout_reduced);
-        productListViewReduced.setAdapter(productListAdapterReduced);
-
-        // Populate the list, through the adapter
-        for(final ProductListReduced entry : getProducts()) {
-        productListAdapterReduced.add(entry);
-        }
-    }*/
 
     public void displayAll() {
 
@@ -100,24 +76,6 @@ public class PickExisting extends AppCompatActivity {
             listView.setAdapter(listAdapter);
         }
     }
-    /*private List<ProductListReduced> getProducts() {
-
-        myDB = new AppDatabaseHelper(this);
-        float tempPrice = 0;
-        List<ProductListReduced> theList = new ArrayList<ProductListReduced>();
-        Cursor data = myDB.feedNewList();
-        ProductListReduced product;
-        if (data.getCount() == 0) {
-            Toast.makeText(this, "There are no contents in this list!", Toast.LENGTH_LONG).show();
-        } else {
-            while (data.moveToNext()) {
-                tempPrice = Float.valueOf(data.getString(2));
-                product = new ProductListReduced(data.getString(1),  "$" + String.format("%.2f", tempPrice), data.getString(3));
-                theList.add(product);
-            }
-        }
-        return theList;
-    }*/
     /**
      * onAddNew
      * @param view
